@@ -1,0 +1,26 @@
+@import '../utilities/variables.css';
+
+.footer {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.footer-text {
+    text-align: end;
+    margin-right: 10px;
+    color: var(--gray-color-1);
+    font-size: .9em;
+}
+
+.footer-image {
+    width: 1.5em;
+}
+
+
+
+@media (min-width: 768px) {
+    .footer{
+        margin-right: 30px;
+        margin-bottom: 20px;
+    }
+}

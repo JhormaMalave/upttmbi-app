@@ -5,7 +5,7 @@
 
 /* Root es como el body */
 body {
-    background-color: var(--bg-color);
+    background-color: var(#fff);
 }
 
 a{

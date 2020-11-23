@@ -4,13 +4,15 @@ import {
     Switch,
     Route
 } from 'react-router-dom';
+import DepartmentRouter from './DepartmentRouter';
 import SessionRouter from './SessionRouter';
 
 const AppRouter = () => {
     return (
         <Router>
             <Switch>
-                <Route path="/" component={ SessionRouter } />
+                <Route path="/login" component={ SessionRouter } />
+                <Route path="/" component={ DepartmentRouter } />
             </Switch>
         </Router>
     );

@@ -16,7 +16,6 @@ const SessionRouter = () => {
             </div>
             <main className="main">
                 <Switch>
-                    <Route path="/" component={ LoginScreen } />
                     <Route path="/login" component={ LoginScreen } />
                 </Switch>
             </main>

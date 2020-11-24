@@ -8,21 +8,39 @@
    
 }
 
-.btn-primary-outline {
-  @apply border-indigo-500 text-indigo-500;
+.btn-primary {
+  @apply btn border-indigo-500 bg-indigo-500 text-white;
 }
 
-.btn-primary {
-  @apply border-indigo-500 bg-indigo-500 text-white;
+.btn-danger {
+  @apply btn border-red-500 bg-red-500 text-white
+}
+
+.btn-primary-outline {
+  @apply btn border-indigo-500 text-indigo-500;
+}
+
+
+.btn-danger-outline {
+  @apply btn border-red-500 text-red-500;
 }
 
 .btn-primary:hover {
   @apply bg-indigo-600
 }
 
+.btn-danger:hover {
+  @apply bg-red-600
+}
+
 .btn-primary-outline:hover {
   @apply bg-indigo-600 text-white;
 }
+
+.btn-danger-outline:hover {
+  @apply bg-red-600 text-white;
+}
+
 
 .btn-primary-outline:focus {
   @apply outline-none;

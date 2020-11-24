@@ -4,19 +4,16 @@ import {
     Route
 } from 'react-router-dom';
 import Footer from '../components/department/Footer';
-import Navbar from '../components/department/Navbar';
 import SideBar from '../components/department/Sidebar';
 import SectionScreen from '../screens/department/SectionsScreen';
-import SubjectsScreen from '../screens/department/SubjectsScreen';
-
+import SubjectsScreen from '../screens/department/subjects/SubjectsScreen';
 
 const DepartmentRouter = () => {
     return (
         <>      
             <SideBar />
 
-            <div className="app">
-                <Navbar />
+            <div className="min-h-screen relative md:ml-64 bg-gray-200 flex flex-col justify-between">
                 <main className="app-main">
                     <Switch>
                         <Route path="/subjects" component={ SubjectsScreen } />

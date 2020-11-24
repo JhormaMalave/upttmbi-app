@@ -6,22 +6,21 @@ import {
 import SessionFooter from '../components/session/SessionFooter';
 import LoginScreen from '../screens/session/LoginScreen';
 
-import '../styles/themes/session.css'
-
 const SessionRouter = () => {
     return (
-        <>      
+        <div className="flex flex-col min-h-screen bg--300 justify-between background-image">      
             <div>
                 
             </div>
-            <main className="main">
+            <main className="flex justify-center">
                 <Switch>
                     <Route path="/login" component={ LoginScreen } />
                 </Switch>
             </main>
-            <SessionFooter />
-        </>
-
+            <div className="flex justify-end">
+                <SessionFooter />
+            </div>
+        </div>
     );
 }
 

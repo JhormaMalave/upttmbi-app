@@ -3,7 +3,6 @@ import {
     NavLink
 } from 'react-router-dom';
 
-import '../../styles/layout/sidebar.css'
 
 const SideBar = () => {
     return (

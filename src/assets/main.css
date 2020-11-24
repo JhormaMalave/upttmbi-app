@@ -29094,6 +29094,97 @@ video {
   animation: bounce 1s infinite;
 }
 
+.btn {
+  border-radius: 0.375rem;
+  border-width: 1px;
+  margin: 0.5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.btn-primary-outline {
+  --tw-border-opacity: 1;
+  border-color: rgba(99, 102, 241, var(--tw-border-opacity));
+  --tw-text-opacity: 1;
+  color: rgba(99, 102, 241, var(--tw-text-opacity));
+}
+
+.btn-primary {
+  --tw-bg-opacity: 1;
+  background-color: rgba(99, 102, 241, var(--tw-bg-opacity));
+  --tw-border-opacity: 1;
+  border-color: rgba(99, 102, 241, var(--tw-border-opacity));
+  --tw-text-opacity: 1;
+  color: rgba(255, 255, 255, var(--tw-text-opacity));
+}
+
+.btn-primary:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgba(79, 70, 229, var(--tw-bg-opacity))
+}
+
+.btn-primary-outline:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgba(79, 70, 229, var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgba(255, 255, 255, var(--tw-text-opacity));
+}
+
+.btn-primary-outline:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+/* ¡My Styles! */
+
+.session-template {
+  min-height: 100vh;
+}
+
+.form-group {
+  margin-top: 1rem;
+}
+
+.form-label {
+  display: block;
+  font-weight: 500;
+  line-height: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.form-input {
+  -webkit-appearance: none;
+          appearance: none;
+  --tw-bg-opacity: 1;
+  background-color: rgba(243, 244, 246, var(--tw-bg-opacity));
+  border-radius: 0.5rem;
+  display: block;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  width: 100%;
+}
+
+.form-link {
+  display: inline-block;
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  --tw-text-opacity: 1;
+  color: rgba(239, 68, 68, var(--tw-text-opacity));
+  vertical-align: baseline;
+}
+
+.background-image {
+  background-position: left bottom;
+  background-repeat: no-repeat;
+  background-image: url('./images/teacher.svg');
+  background-size: 50%;
+}
+
 @media (min-width: 640px) {
   .sm\:space-y-0 > :not([hidden]) ~ :not([hidden]) {
     --tw-space-y-reverse: 0;

@@ -1,6 +1,0 @@
-@import '../utilities/variables.css';
-@import '../layout/footer.css';
-
-.footer-text {
-    color: var(--primary-color);
-}

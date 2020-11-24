@@ -9,7 +9,6 @@ import SideBar from '../components/department/Sidebar';
 import SectionScreen from '../screens/department/SectionsScreen';
 import SubjectsScreen from '../screens/department/SubjectsScreen';
 
-import '../styles/themes/department.css';
 
 const DepartmentRouter = () => {
     return (

@@ -3,18 +3,20 @@ import React from 'react';
 const LoginForm = () => {
     return (
         <form action="" className="session-form">
-            <div className="form-control">
-                <label className="label">Usuario</label>
-                <input type="text" autoComplete="off" />
+            <div className="form-group">
+                <label className="block text-sm font-medium text-gray-700">Usuario</label>
+                <input type="text" className="form-input " autoComplete="off" />
             </div>
-            <div className="form-control">
-                <label className="label">Contraseña</label>
-                <input type="password" />
-                <a className="form-control__link" href="/login">¿Has olvidado tu contraseña?</a>
+            <div className="form-group">
+                <label className="block text-sm font-medium text-gray-700">Contraseña</label>
+                <input type="password" className="form-input" />
+                <a className="inline-block align-baseline font-normal text-sm text-blue-500" href="/login">¿Has olvidado tu contraseña?</a>
             </div>
-            <button className="primary-button session-form__button">
-                Ingresar
-            </button>
+            <div className="flex items-center justify-end pt-5">
+                <button className="btn btn-primary  transition duration-500 ease select-none focus:shadow-outline">
+                    Ingresar
+                </button>
+            </div>
         </form>
     );
 }

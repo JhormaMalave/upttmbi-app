@@ -120,7 +120,7 @@ const Sidebar = () => {
               <li className="inline-flex">
                 <Link
                   className="text-gray-800 hover:text-gray-600 text-sm block mb-4 no-underline font-semibold"
-                  to="/"
+                  to="/subjects"
                 >
                   <i className="fab fa-css3-alt mr-2 text-gray-500 text-base"></i> Mostrar
                 </Link>

@@ -17,7 +17,7 @@ const SessionRouter = () => {
                     <Route path="/login" component={ LoginScreen } />
                 </Switch>
             </main>
-            <div className="flex justify-end mt-10">
+            <div className="flex justify-end">
                 <SessionFooter />
             </div>
         </div>

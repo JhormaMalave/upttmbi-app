@@ -5,7 +5,7 @@ const Form = () => {
     <div className="flex flex-col my-2">
       <div className="-mx-3 md:flex mb-6">
         <div className="md:w-1/2 px-3 mb-6 md:mb-0">
-          <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-state">
+          <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" htmlFor="grid-state">
             Trayecto
           </label>
           <div className="relative">
@@ -22,7 +22,7 @@ const Form = () => {
           
         </div>
         <div className="md:w-1/2 px-3">
-          <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-last-name">
+          <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" htmlFor="grid-last-name">
             Unidades curriculares
           </label>
           <input className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="grid-last-name" type="text" />
@@ -30,7 +30,7 @@ const Form = () => {
       </div>
       <div className="-mx-3 md:flex mb-6">
         <div className="md:w-full px-3">
-          <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-last-name">
+          <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" htmlFor="grid-last-name">
             Nombre
           </label>
           <input className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" id="grid-last-name" type="text" placeholder="Doe" />

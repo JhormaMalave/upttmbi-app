@@ -1,5 +1,5 @@
 import React from 'react'
-import {trajects} from '../../../data/trajects'
+import {trajects} from '../../data/trajects'
 
 const SelectTraject = ({setTraject}) => {
 

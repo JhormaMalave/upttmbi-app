@@ -4,9 +4,8 @@ import { Link } from "react-router-dom";
 //import NotificationDropdown from "./NotificationDropdown.js";
 //import UserDropdown from "./UserDropdown.js";
 
-const Sidebar = () => {
+const Sidebar = React.memo(() => {
   const [collapseShow, setCollapseShow] = useState("hidden");
-
   return (
     <>
       <nav className="md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-no-wrap md:overflow-hidden shadow-xl bg-white flex flex-wrap items-center justify-between relative md:w-64 z-10 py-4 px-6">
@@ -95,7 +94,7 @@ const Sidebar = () => {
               <li className="items-center">
                 <Link
                   className="text-red-500 hover:text-red-600 text-xs uppercase py-3 font-bold block"
-                  to="/"
+                  to="/login"
                 >
                   <i className="fas fa-user-circle text-gray-500 mr-2 text-sm"></i> Cerrar Sesión
                 </Link>
@@ -104,33 +103,59 @@ const Sidebar = () => {
             {/* Divider */}
             <hr className="my-4 md:min-w-full" />
             {/* Heading */}
-            <h6 className="md:min-w-full text-gray-600 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
-              Asignaturas
-            </h6>
-            {/* Navigation */}
-            <ul className="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
-              <li className="inline-flex">
-                <Link
-                  className="text-gray-800 hover:text-gray-600 text-sm block mb-4 no-underline font-semibold"
-                  to="/subjects/new"
-                >
-                  <i className="fas fa-paint-brush mr-2 text-gray-500 text-base"></i> Agregar
-                </Link>
-              </li>
-              <li className="inline-flex">
-                <Link
-                  className="text-gray-800 hover:text-gray-600 text-sm block mb-4 no-underline font-semibold"
-                  to="/subjects"
-                >
-                  <i className="fab fa-css3-alt mr-2 text-gray-500 text-base"></i> Mostrar
-                </Link>
-              </li>
-            </ul>
+            <div>
+              <h6 className="md:min-w-full text-gray-600 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
+                Asignaturas
+              </h6>
+              {/* Navigation */}
+              <ul className="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
+                <li className="inline-flex">
+                  <Link
+                    className="text-gray-800 hover:text-gray-600 text-sm block mb-4 no-underline font-semibold"
+                    to="/department/subjects/new"
+                  >
+                    <i className="fas fa-paint-brush mr-2 text-gray-500 text-base"></i> Agregar
+                  </Link>
+                </li>
+                <li className="inline-flex">
+                  <Link
+                    className="text-gray-800 hover:text-gray-600 text-sm block mb-4 no-underline font-semibold"
+                    to="/department/subjects"
+                  >
+                    <i className="fab fa-css3-alt mr-2 text-gray-500 text-base"></i> Mostrar
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h6 className="md:min-w-full text-gray-600 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
+                Secciones
+              </h6>
+              {/* Navigation */}
+              <ul className="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
+                <li className="inline-flex">
+                  <Link
+                    className="text-gray-800 hover:text-gray-600 text-sm block mb-4 no-underline font-semibold"
+                    to="/department/sections/new"
+                  >
+                    <i className="fas fa-paint-brush mr-2 text-gray-500 text-base"></i> Agregar
+                  </Link>
+                </li>
+                <li className="inline-flex">
+                  <Link
+                    className="text-gray-800 hover:text-gray-600 text-sm block mb-4 no-underline font-semibold"
+                    to="/department/sections"
+                  >
+                    <i className="fab fa-css3-alt mr-2 text-gray-500 text-base"></i> Mostrar
+                  </Link>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </nav>
     </>
   );
-}
+});
 
 export default Sidebar;

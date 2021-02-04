@@ -1,6 +1,7 @@
 import React, {useMemo} from 'react'
 import { getSubjectById } from '../../../selectors/getSubjectById';
 import { Redirect, useParams, Link } from 'react-router-dom'
+import SubjectInformation from '../../../components/department/subjects/SubjectInformation';
 
 const SubjectScreen = () => {
   const { subjectId } = useParams();
@@ -29,27 +30,7 @@ const SubjectScreen = () => {
           </div>
         </div>
       </div>
-      <div className="bg-white p-5 m-10 rounded-lg ">
-        <h2 className="font-bold text-2xl pb-4 text-red-400 text-center">Información de la asignatura</h2>
-        <div className="grid md:grid-cols-3 gap-4 sm:grid-cols-2">
-          <div>
-            <h3 className="font-bold">Carrera:</h3>
-            <p>Informática</p>
-          </div>
-          <div>
-            <h3 className="font-bold">Nombre:</h3>
-            <p>{subject.name}</p>
-          </div>
-          <div>
-            <h3 className="font-bold">Trayecto:</h3>
-            <p>{subject.traject}</p>
-          </div>
-          <div>
-            <h3 className="font-bold">Unidades curriculares:</h3>
-            <p>{subject.uc}</p>
-          </div>
-        </div>
-      </div>
+      <SubjectInformation subject={subject} />
     </>
   )
 }

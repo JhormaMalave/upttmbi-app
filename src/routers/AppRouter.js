@@ -12,7 +12,7 @@ const AppRouter = () => {
         <Router>
             <Switch>
                 <Route path="/login" component={ SessionRouter } />
-                <Route path="/" component={ DepartmentRouter } />
+                <Route path="/department" component={ DepartmentRouter } />
             </Switch>
         </Router>
     );

@@ -2,7 +2,7 @@ import React from 'react';
 
 
 
-const Footer = () => {
+const Footer = React.memo(() => {
     return (
         <footer className="block py-4 mt-10">
             <div className="container mx-auto px-4">
@@ -14,6 +14,6 @@ const Footer = () => {
             </div>
         </footer>
     );
-}
+});
 
 export default Footer;

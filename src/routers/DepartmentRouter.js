@@ -7,6 +7,7 @@ import Footer from '../components/department/Footer';
 import SideBar from '../components/department/Sidebar';
 import SectionsScreen from '../screens/department/sections/SectionsScreen';
 import SectionsAddScreen from '../screens/department/sections/SectionsAddScreen';
+import SectionScreen from '../screens/department/sections/SectionScreen';
 
 import SubjectAddScreen from '../screens/department/subjects/SubjectAddScreen';
 import SubjectScreen from '../screens/department/subjects/SubjectScreen';
@@ -25,6 +26,7 @@ const DepartmentRouter = () => {
                         <Route exact path="/department/subjects" component={ SubjectsScreen } />
 
                         <Route exact path="/department/sections/new" component={ SectionsAddScreen } />
+                        <Route exact path="/department/sections/:sectionId" component={ SectionScreen } />
                         <Route exact path="/department/sections" component={ SectionsScreen } />
                     </Switch>
                 </main>

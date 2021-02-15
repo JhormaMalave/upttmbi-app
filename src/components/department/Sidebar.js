@@ -16,7 +16,7 @@ const Sidebar = React.memo(() => {
             type="button"
             onClick={() => setCollapseShow("bg-white m-2 py-3 px-6")}
           >
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" className="w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
 </svg>
           </button>
@@ -60,7 +60,7 @@ const Sidebar = React.memo(() => {
                     className="cursor-pointer text-black opacity-50 md:hidden px-3 py-1 text-xl leading-none bg-transparent rounded border border-solid border-transparent"
                     onClick={() => setCollapseShow("hidden")}
                   >
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
                     </svg>
                   </button>
@@ -98,7 +98,7 @@ const Sidebar = React.memo(() => {
               <li className="items-center">
                 <Link
                   className="text-red-500 hover:text-red-600 text-xs uppercase py-3 font-bold block"
-                  to="/login"
+                  to="/auth/login"
                 >
                   <i className="fas fa-user-circle text-gray-500 mr-2 text-sm"></i> Cerrar Sesión
                 </Link>

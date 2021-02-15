@@ -2,17 +2,19 @@ import React from 'react';
 import {
     BrowserRouter as Router,
     Switch,
-    Route
+    Route,
+    Redirect
 } from 'react-router-dom';
 import DepartmentRouter from './DepartmentRouter';
-import SessionRouter from './SessionRouter';
+import AuthRouter from './AuthRouter';
 
 const AppRouter = () => {
     return (
         <Router>
             <Switch>
-                <Route path="/login" component={ SessionRouter } />
+                <Route path="/auth" component={ AuthRouter } />
                 <Route path="/department" component={ DepartmentRouter } />
+                <Redirect to="/auth" />
             </Switch>
         </Router>
     );

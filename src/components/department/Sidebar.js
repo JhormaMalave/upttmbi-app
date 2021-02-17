@@ -72,7 +72,7 @@ const Sidebar = React.memo(() => {
               <li className="items-center">
                 <Link
                   className="text-indigo-500 hover:text-indigo-600 text-xs uppercase py-3 font-bold block"
-                  to="/"
+                  to="/department/home"
                 >
                   <i className="fas fa-tv opacity-75 mr-2 text-sm"></i> Inicio
                 </Link>

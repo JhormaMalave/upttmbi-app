@@ -6,6 +6,8 @@ import {
 import Footer from '../components/department/Footer';
 import SideBar from '../components/department/Sidebar';
 
+// Department
+import DepartmentScreen from '../screens/department/DepartmentScreen';
 // Sections routes
 import SectionsScreen from '../screens/department/sections/SectionsScreen';
 import SectionsAddScreen from '../screens/department/sections/SectionsAddScreen';
@@ -26,6 +28,8 @@ const DepartmentRouter = () => {
             <div className="min-h-screen relative md:ml-64 bg-gray-200 flex flex-col justify-between">
                 <main className="app-main">
                     <Switch>
+                        <Route exact path="/department/home" component={DepartmentScreen} />
+
                         <Route exact path="/department/subjects/new" component={ SubjectAddScreen } />
                         <Route exact path="/department/subjects/:subjectId" component={ SubjectScreen } />
                         <Route exact path="/department/subjects" component={ SubjectsScreen } />

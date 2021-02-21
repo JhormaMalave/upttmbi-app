@@ -4,7 +4,8 @@ const authReducer = (state = {}, action) => {
   switch (action.type) {
     case types.login:
       return {
-        email: action.payload.email,    
+        ...state,
+        email: action.payload.email,   
       }
     case types.logout:
       return({});

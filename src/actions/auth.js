@@ -1,33 +1,41 @@
-import { authURL, railsConfig } from "../rails/railsConfig";
+import Swal from "sweetalert2";
+import { authURL } from "../rails/railsConfig";
 import { types } from "../types/types";
 
 const startLoginWithEmailAndPassword = (email, password) => {
   return (async dispatchEvent => {
-    const response = await fetch(`${authURL}/token`, {
+    const response = await fetch(`${authURL}/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Access-Control-Origin': '*'
+        'Access-Control-Origin': '*',
       },
       body: JSON.stringify({
-        grant_type: 'password',
-        email,
-        password,
-        client_id: railsConfig.clientId,
-        client_secret: railsConfig.clientSecret,
+        user: {
+          email,
+          password,
+        }
       })
     });
-    const user = await response.json()
-    console.log(user)
-    // Realizar correctamente el login
+    const user = await response.json();
+    const token = response.headers.get('Authorization');
+    if (token){
+      sessionStorage.setItem('token', token);
+      dispatchEvent(login(user.email));
+    } else {
+      Swal.fire(
+        'No se pudo ingresar',
+        'Verificar el correo o la contraseña',
+        'error',
+      );
+    }
   });
 }
 
-const login = (uid, displayName) => ({
+const login = (email) => ({
   type: types.login,
   payload: {
-    uid,
-    displayName,
+    email: email,
   }
 });
 

@@ -10,7 +10,7 @@ const LoginForm = ({history}) => {
   const handleLogin = (e) => {
       e.preventDefault();
       dispatch(startLoginWithEmailAndPassword(form.email, form.password));
-      history.replace('/department/subjects')
+      //history.replace('/department/subjects')
   }
   const {form, handleInputChange} = useForm({
     email: 'jhormamalave@gmail.com',

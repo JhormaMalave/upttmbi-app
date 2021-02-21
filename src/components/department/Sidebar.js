@@ -1,11 +1,19 @@
 import React, {useState} from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { startLogout } from "../../actions/auth";
 
 //import NotificationDropdown from "./NotificationDropdown.js";
 //import UserDropdown from "./UserDropdown.js";
 
 const Sidebar = React.memo(() => {
   const [collapseShow, setCollapseShow] = useState("hidden");
+
+  const dispatch = useDispatch()
+  const handleLogout = () => {
+    dispatch(startLogout());
+  }
+
   return (
     <>
       <nav className="md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-no-wrap md:overflow-hidden shadow-xl bg-white flex flex-wrap items-center justify-between relative md:w-64 z-10 py-4 px-6">
@@ -96,12 +104,12 @@ const Sidebar = React.memo(() => {
                 </Link>
               </li>
               <li className="items-center">
-                <Link
+                <button
                   className="text-red-500 hover:text-red-600 text-xs uppercase py-3 font-bold block"
-                  to="/auth/login"
+                  onClick={handleLogout}
                 >
                   <i className="fas fa-user-circle text-gray-500 mr-2 text-sm"></i> Cerrar Sesión
-                </Link>
+                </button>
               </li>
             </ul>
             {/* Divider */}

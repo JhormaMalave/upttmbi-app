@@ -2,6 +2,13 @@ import Swal from "sweetalert2";
 import { authURL } from "../rails/railsConfig";
 import { types } from "../types/types";
 
+const startLogout = () => {
+  return (async dispatchEvent => {
+    await sessionStorage.setItem('user', '');
+    dispatchEvent(logout());
+  })
+}
+
 const startLoginWithEmailAndPassword = (email, password) => {
   return (async dispatchEvent => {
     const response = await fetch(`${authURL}/login`, {
@@ -20,8 +27,8 @@ const startLoginWithEmailAndPassword = (email, password) => {
     const user = await response.json();
     const token = response.headers.get('Authorization');
     if (token){
-      sessionStorage.setItem('token', token);
-      dispatchEvent(login(user.email));
+      await sessionStorage.setItem('user', JSON.stringify({email: user.email, token}));
+      dispatchEvent(login(user.email, token));
     } else {
       Swal.fire(
         'No se pudo ingresar',
@@ -32,11 +39,16 @@ const startLoginWithEmailAndPassword = (email, password) => {
   });
 }
 
-const login = (email) => ({
+const logout = () => ({
+  type: types.logout,
+});
+
+const login = (email, token) => ({
   type: types.login,
   payload: {
     email: email,
+    token: token
   }
 });
 
-export {startLoginWithEmailAndPassword, login}
+export {startLoginWithEmailAndPassword, startLogout, login}

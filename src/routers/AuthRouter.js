@@ -5,6 +5,7 @@ import {
     Redirect
 } from 'react-router-dom';
 import LoginScreen from '../screens/auth/LoginScreen';
+import SignupScreen from '../screens/auth/SignupScreen';
 
 const AuthRouter = () => {
     return (
@@ -12,6 +13,7 @@ const AuthRouter = () => {
             <main className="flex justify-center">
                 <Switch>
                     <Route path="/auth/login" component={ LoginScreen } />
+                    <Route path="/auth/signup" component={ SignupScreen } />
                     <Redirect to="/auth/login" />
                 </Switch>
             </main>

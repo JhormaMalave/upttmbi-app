@@ -9,6 +9,25 @@ const startLogout = () => {
   })
 }
 
+const startSignup = (email, password) => {
+  return (async dispatchEvent => {
+    const response = await fetch(`${authURL}/signup`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Origin': '*',
+      },
+      body: JSON.stringify({
+        user: {
+          email,
+          password,
+        }
+      })
+    })
+    dispatchEvent(startLoginWithEmailAndPassword(email, password))
+  })
+}
+
 const startLoginWithEmailAndPassword = (email, password) => {
   return (async dispatchEvent => {
     const response = await fetch(`${authURL}/login`, {
@@ -51,4 +70,9 @@ const login = (email, token) => ({
   }
 });
 
-export {startLoginWithEmailAndPassword, startLogout, login}
+export {
+  startSignup,
+  startLoginWithEmailAndPassword,
+  startLogout,
+  login
+}

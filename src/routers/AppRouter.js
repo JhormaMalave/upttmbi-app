@@ -4,7 +4,7 @@ import {
     Switch,
     Redirect
 } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 
 import DepartmentRouter from './DepartmentRouter';
@@ -14,11 +14,9 @@ import PublicRouter from './PublicRouter';
 import { login } from '../actions/auth';
 
 
-
 const AppRouter = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [checking, setChecking] = useState(true)
-    const auth = useSelector(state => state.auth)
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -30,7 +28,7 @@ const AppRouter = () => {
             setIsLoggedIn(false);
         }
         setChecking(false);
-    }, [setIsLoggedIn, dispatch])
+    }, [setChecking, setIsLoggedIn, dispatch])
 
     if(checking) {
         return (

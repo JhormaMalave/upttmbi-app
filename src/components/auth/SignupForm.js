@@ -1,24 +1,50 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { startLoginWithEmailAndPassword } from '../../actions/auth';
+import Swal from 'sweetalert2';
+
+import { startSignup } from '../../actions/auth';
 import { useForm } from '../../hooks/useForm';
 
-const LoginForm = ({history}) => {
-  const dispatch = useDispatch();
+const SignupForm = () => {
+  const dispatch = useDispatch()
 
-  const handleLogin = (e) => {
-      e.preventDefault();
-      dispatch(startLoginWithEmailAndPassword(form.email, form.password));
-      history.push('/department');
-  }
   const {form, handleInputChange} = useForm({
-    email: 'jhormamalave@gmail.com',
+    email: 'jhormamalave99@gmail.com',
     password: '123456',
+    passwordConfirm: '123456',
   });
 
+  const {email, password, passwordConfirm} = form
+
+  const validateForm = () => {
+    if (password.trim().length < 6) {
+      Swal.fire(
+        'Error',
+        'Las contraseña no puede ser menor a 6 caracteres',
+        'error',
+      );
+      return false;
+    }
+    if (password !== passwordConfirm) {
+      Swal.fire(
+        'Error',
+        'Las contraseñas no coinciden',
+        'error',
+      );
+      return false;
+    }
+    return true;
+  }
+
+  const handleSignup = (e) => {
+    e.preventDefault();
+    if (validateForm()) {
+      dispatch(startSignup(email, password, passwordConfirm));
+    }
+  }
+
   return (
-      <form className="mt-8 space-y-6" onSubmit={handleLogin} >
+      <form className="mt-8 space-y-6" onSubmit={handleSignup} >
       <input type="hidden" name="remember" value="true" />
       <div className="rounded-md shadow-sm -space-y-px">
         <div>
@@ -29,8 +55,8 @@ const LoginForm = ({history}) => {
             type="email"
             autoComplete="email"
             className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md mb-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-            placeholder="Usuario"
-            value={form.email}
+            placeholder="Correo"
+            value={email}
             onChange={handleInputChange}
           />
         </div>
@@ -41,33 +67,24 @@ const LoginForm = ({history}) => {
             name="password"
             type="password"
             autoComplete="current-password"
-            className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" 
+            className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md mb-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" 
             placeholder="Contraseña"
-            value={form.password}
+            value={password}
             onChange={handleInputChange}
           />
         </div>
-      </div>
-
-      <div className="flex items-center justify-between">
-        <div className="flex items-center">
-          <input
-            id="remember_me"
-            name="remember_me"
-            type="checkbox"
-            className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+        <div>
+          <label htmlFor="passwordConfirm" className="sr-only">Confirmar contraseña</label>
+          <input 
+            id="passwordConfirm"
+            name="passwordConfirm"
+            type="password"
+            autoComplete="current-password"
+            className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" 
+            placeholder="Confirmar contraseña"
+            value={passwordConfirm}
+            onChange={handleInputChange}
           />
-          <label htmlFor="remember_me" className="ml-2 block text-sm text-gray-900">
-            Recordarme
-          </label>
-        </div>
-        <div className="text-sm">
-          <Link
-            to="/auth/password"
-            className="font-medium text-indigo-600 hover:text-indigo-500"
-          >
-            ¿Has olvidado tu contraseña?
-          </Link>
         </div>
       </div>
 
@@ -81,11 +98,11 @@ const LoginForm = ({history}) => {
               <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
             </svg>
           </span>
-          Ingresar
+          Registrarse
         </button>
       </div>
     </form>
   );
 }
 
-export default LoginForm;
+export default SignupForm;

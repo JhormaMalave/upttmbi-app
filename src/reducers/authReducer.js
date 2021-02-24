@@ -8,6 +8,7 @@ const authReducer = (state = {}, action) => {
         email: action.payload.email,
         token: action.payload.token, 
       }
+
     case types.logout:
       return({});
     default:

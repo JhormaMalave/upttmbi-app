@@ -22,6 +22,7 @@ import TeacherScreen from '../screens/department/teachers/TeacherScreen';
 
 // Periods routes
 import PeriodsScreen from '../screens/department/periods/PeriodsScreen';
+import PeriodsAddScreen from '../screens/department/periods/PeriodsAddScreen';
 
 const DepartmentRouter = () => {
     return (
@@ -45,7 +46,8 @@ const DepartmentRouter = () => {
                         <Route exact path="/department/teachers/:teacherId" component={ TeacherScreen } />
                         <Route exact path="/department/teachers" component={ TeachersScreen } />
 
-                        <Route exact path="/department/period" component={ PeriodsScreen } />
+                        <Route exact path="/department/periods" component={ PeriodsScreen } />
+                        <Route exact path="/department/periods/new" component={ PeriodsAddScreen } />
                     </Switch>
                 </main>
                 <Footer />

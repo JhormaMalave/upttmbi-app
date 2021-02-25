@@ -20,6 +20,9 @@ import SubjectsScreen from '../screens/department/subjects/SubjectsScreen';
 import TeachersScreen from '../screens/department/teachers/TeachersScreen';
 import TeacherScreen from '../screens/department/teachers/TeacherScreen';
 
+// Periods routes
+import PeriodsScreen from '../screens/department/periods/PeriodsScreen';
+
 const DepartmentRouter = () => {
     return (
         <>      
@@ -41,6 +44,8 @@ const DepartmentRouter = () => {
                         <Route exact path="/department/teachers/new" component={ SectionsAddScreen } />
                         <Route exact path="/department/teachers/:teacherId" component={ TeacherScreen } />
                         <Route exact path="/department/teachers" component={ TeachersScreen } />
+
+                        <Route exact path="/department/period" component={ PeriodsScreen } />
                     </Switch>
                 </main>
                 <Footer />

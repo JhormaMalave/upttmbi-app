@@ -22,7 +22,7 @@ const AppRouter = () => {
     useEffect(() => {
         if (sessionStorage.getItem('user')){
             const user = JSON.parse(sessionStorage.getItem('user')) || '';
-            dispatch(login(user.email, user.token));
+            dispatch(login(user));
             setIsLoggedIn(true);
         }else{
             setIsLoggedIn(false);

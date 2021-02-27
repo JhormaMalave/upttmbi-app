@@ -4,13 +4,12 @@ import { Link } from 'react-router-dom';
 import { startLoginWithEmailAndPassword } from '../../actions/auth';
 import { useForm } from '../../hooks/useForm';
 
-const LoginForm = ({history}) => {
+const LoginForm = () => {
   const dispatch = useDispatch();
 
   const handleLogin = (e) => {
       e.preventDefault();
       dispatch(startLoginWithEmailAndPassword(form.email, form.password));
-      history.push('/department');
   }
   const {form, handleInputChange} = useForm({
     email: 'jhormamalave@gmail.com',

@@ -20,7 +20,7 @@ const LoginScreen = ({history}) => {
               </Link>
             </p>
           </div>
-          <LoginForm history={history} />
+          <LoginForm />
         </div>
       </div>
     );

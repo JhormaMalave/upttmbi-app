@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { startLoginWithEmailAndPassword } from '../../actions/auth';
 import { useForm } from '../../hooks/useForm';
@@ -7,9 +7,13 @@ import { useForm } from '../../hooks/useForm';
 const LoginForm = () => {
   const dispatch = useDispatch();
 
+  const { loading } = useSelector(state => state.ui)
+
   const handleLogin = (e) => {
       e.preventDefault();
-      dispatch(startLoginWithEmailAndPassword(form.email, form.password));
+      if (!loading) {
+        dispatch(startLoginWithEmailAndPassword(form.email, form.password));
+      }
   }
   const {form, handleInputChange} = useForm({
     email: 'jhormamalave@gmail.com',
@@ -74,6 +78,7 @@ const LoginForm = () => {
         <button
           type="submit"
           className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          disabled={ loading }
         >
           <span className="absolute left-0 inset-y-0 flex items-center pl-3">
             <svg className="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">

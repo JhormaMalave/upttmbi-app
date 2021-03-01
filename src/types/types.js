@@ -2,7 +2,12 @@ const types = {
   login: '[auth] Login',
   logout: '[auth] Logout',
 
-  getSubjects: '[subjects] Get subjects',
+  uiSetAlert: '[UI] Set Alert',
+  uiRemoveAlert: '[UI] Remove Alert',
+
+  uiStartLoading: '[UI] Start loading',
+  uiFinishLoading: '[UI] Finish loading'
+
 }
 
 export {types}

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import {
     Switch,
     Route
@@ -23,14 +24,18 @@ import TeacherScreen from '../screens/department/teachers/TeacherScreen';
 // Periods routes
 import PeriodsScreen from '../screens/department/periods/PeriodsScreen';
 import PeriodsAddScreen from '../screens/department/periods/PeriodsAddScreen';
+import Alert from '../components/Alert';
 
 const DepartmentRouter = () => {
+    const { alert } = useSelector(state => state.ui);
+
     return (
         <>      
             <SideBar />
 
             <div className="min-h-screen relative md:ml-64 bg-gray-200 flex flex-col justify-between">
                 <main className="app-main">
+                    { alert && <Alert {...alert} /> }
                     <Switch>
                         <Route exact path="/department/home" component={DepartmentScreen} />
 

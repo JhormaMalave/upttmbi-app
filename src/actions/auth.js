@@ -1,11 +1,10 @@
-import { useSelector } from "react-redux";
-import Swal from "sweetalert2";
 import { authURL, clientId, clientSecret } from "../rails/railsConfig";
 import { types } from "../types/types";
+import { setAlert, removeAlert, finishLoading, startLoading } from "./ui";
 
 const startLogout = () => {
   return (async dispatchEvent => {
-    const response = await fetch (`${authURL}/revoke`, {
+    const response = await fetch (`${authURL}/oauth/revoke`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -46,7 +45,8 @@ const startSignup = (email, password) => {
 
 const startLoginWithEmailAndPassword = (email, password) => {
   return (async dispatchEvent => {
-    const response = await fetch(`${authURL}/token`, {
+    dispatchEvent(startLoading());
+    const response = await fetch(`${authURL}/oauth/token`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -62,11 +62,8 @@ const startLoginWithEmailAndPassword = (email, password) => {
     });
     if (response.status === 400) {
       // Optimize this!
-      Swal.fire(
-        'No se pudo ingresar',
-        'Verificar el correo o la contraseña',
-        'error',
-      );
+      dispatchEvent(setAlert('error', 'Por favor comprueba el correo y la contraseña.'));
+      dispatchEvent(finishLoading());
       return;
     }
     const user = await response.json();
@@ -75,9 +72,10 @@ const startLoginWithEmailAndPassword = (email, password) => {
       expiresIn: user.expires_in,
       token: user.access_token
     }
-    console.log(userWithToken);
     await sessionStorage.setItem('user', JSON.stringify(userWithToken));
     dispatchEvent(login(userWithToken));
+    dispatchEvent(finishLoading());
+    dispatchEvent(removeAlert());
   });
 }
 

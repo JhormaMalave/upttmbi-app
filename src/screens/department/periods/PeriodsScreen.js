@@ -1,7 +1,26 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import { useLocation } from 'react-router-dom';
+import queryString from 'query-string';
 import PeriodsOptions from '../../../components/department/periods/PeriodsOptions';
+import PeriodsList from '../../../components/department/periods/PeriodsList';
 
 const PeriodsScreen = () => {
+  const [option, setOption] = useState('all');
+  const state = queryString.parse(useLocation().search);
+
+  useEffect(() => {
+    setOption(() => {
+      switch (state.state) {
+        case 'active':
+          return 'active';
+        case 'inactive':
+          return 'inactive';
+        default:
+          return 'all';
+      }
+    });
+  }, [state, setOption])
+  
   return (
     <div>
       <div className="relative bg-indigo-600 md:pt-20 pb-20 pt-12 m-2 rounded-xl	">
@@ -14,9 +33,13 @@ const PeriodsScreen = () => {
             Debes establecer en periodo escolar universitario con el que deseas trabajar esta sesión. <strong className="text-indigo-200">El periodo universitario se debe crear para cada corte trimestral</strong></h2>
         </div>
       </div>
-      <PeriodsOptions />
+      <PeriodsOptions setOption={setOption} option={option} />
+      {
+        option &&
+          <PeriodsList filter={option} />
+      }
     </div>
-  )
+  );
 }
 
 

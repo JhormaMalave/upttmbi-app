@@ -25,8 +25,8 @@ const TeacherTr = () => {
         <Link className="text-blue-400 hover:text-blue-600 underline" to={`/department/teachers/1`}>
           Ver
         </Link>
-        <a href="#" className="text-blue-400 hover:text-blue-600 underline pl-3">Editar</a>
-        <a href="#" className="text-blue-400 hover:text-blue-600 underline pl-3">Eliminar</a>
+        <button className="text-blue-400 hover:text-blue-600 underline pl-3">Editar</button>
+        <button className="text-blue-400 hover:text-blue-600 underline pl-3">Eliminar</button>
       </td>
     </tr>
   )

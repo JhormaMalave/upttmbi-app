@@ -1,18 +1,11 @@
-import React, {useEffect} from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { startGetSubjects } from '../../../actions/subject';
+import React from 'react';
+
 import SubjectCard from './SubjectCard';
 
 
 const Subjects = ({traject}) => {
-  const dispatch = useDispatch()
-  
-  useEffect(() => {
-    dispatch(startGetSubjects())
-    
-  }, [])
-  // const subjects = []
-  const subjects = useSelector(state => state.subject)
+
+  const subjects = []
 
   return (
     <>

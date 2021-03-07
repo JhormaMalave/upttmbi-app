@@ -1,9 +1,9 @@
 import { createStore, combineReducers, applyMiddleware, compose} from 'redux';
 import thunk from 'redux-thunk';
-import { authReducer } from '../reducers/authReducer';
-import { schoolPeriodReducer } from '../reducers/schoolPeriodReducer';
-import { subjectReducer } from '../reducers/subjectReducer';
-import { uiReducer } from '../reducers/uiReducer';
+import { authReducer } from './reducers/authReducer';
+import { schoolPeriodReducer } from './reducers/schoolPeriodReducer';
+import { subjectReducer } from './reducers/subjectReducer';
+import { uiReducer } from './reducers/uiReducer';
 
 const reducers = combineReducers({
   auth: authReducer,

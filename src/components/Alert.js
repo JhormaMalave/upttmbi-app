@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { removeAlert } from '../actions/ui';
+import { removeAlert } from '../store/actions/ui';
 
 const Alert = ({type, message}) => {
   const dispatch = useDispatch()

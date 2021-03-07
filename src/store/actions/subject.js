@@ -1,4 +1,4 @@
-import { apiURL } from "../rails/railsConfig";
+import { apiURL } from "../../rails/railsConfig";
 import { types } from "../types/types";
 
 const startGetSubjects = () => {

@@ -1,7 +1,7 @@
 import { apiURL } from "../rails/railsConfig";
 
 const getSchoolPeriodsFetch = async () => {
-  const token = JSON.parse(sessionStorage.getItem('user')).token
+  const token = JSON.parse(localStorage.getItem('user')).token
 
   const response = await fetch (`${apiURL}/school_periods`, {
     method: 'GET',

@@ -11,7 +11,7 @@ import DepartmentRouter from './DepartmentRouter';
 import AuthRouter from './AuthRouter';
 import PrivateRouter from './PrivateRouter';
 import PublicRouter from './PublicRouter';
-import { login } from '../actions/auth';
+import { login } from '../store/actions/auth';
 
 
 const AppRouter = () => {
@@ -20,8 +20,8 @@ const AppRouter = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        if (sessionStorage.getItem('user')){
-            const user = JSON.parse(sessionStorage.getItem('user')) || '';
+        if (localStorage.getItem('user')){
+            const user = JSON.parse(localStorage.getItem('user')) || '';
             dispatch(login(user));
             setIsLoggedIn(true);
         }else{

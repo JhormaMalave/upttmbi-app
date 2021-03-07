@@ -1,10 +1,9 @@
 import React, {useState} from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { startLogout } from "../../actions/auth";
 
-//import NotificationDropdown from "./NotificationDropdown.js";
-//import UserDropdown from "./UserDropdown.js";
+import { startLogout } from "../../store/actions/auth";
+
 
 const Sidebar = React.memo(() => {
   const [collapseShow, setCollapseShow] = useState("hidden");

@@ -1,7 +1,8 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { startLoginWithEmailAndPassword } from '../../actions/auth';
+
+import { startLoginWithEmailAndPassword } from '../../store/actions/auth';
 import { useForm } from '../../hooks/useForm';
 
 const LoginForm = () => {

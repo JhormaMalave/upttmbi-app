@@ -1,4 +1,4 @@
-import { getSchoolPeriodsFetch } from "../helpers/schoolPeriodHelper"
+import { getSchoolPeriodsFetch } from "../../helpers/schoolPeriodHelper"
 import { types } from "../types/types";
 
 const startLoadPeriodSchool = () => {

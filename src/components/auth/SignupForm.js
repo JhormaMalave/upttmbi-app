@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import Swal from 'sweetalert2';
 
-import { startSignup } from '../../actions/auth';
+import { startSignup } from '../../store/actions/auth';
 import { useForm } from '../../hooks/useForm';
 
 const SignupForm = () => {

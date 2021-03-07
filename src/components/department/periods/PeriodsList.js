@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { startLoadPeriodSchool } from '../../../actions/periods';
+
+import { startLoadPeriodSchool } from '../../../store/actions/periods';
 import PeriodsLi from './PeriodsLi';
 
 const PeriodsList =React.memo(({filter}) => {

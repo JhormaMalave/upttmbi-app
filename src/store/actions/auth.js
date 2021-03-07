@@ -1,4 +1,4 @@
-import { authURL, clientId, clientSecret } from "../rails/railsConfig";
+import { authURL, clientId, clientSecret } from "../../rails/railsConfig";
 import { types } from "../types/types";
 import { setAlert, removeAlert, finishLoading, startLoading } from "./ui";
 
@@ -14,11 +14,11 @@ const startLogout = () => {
       body: JSON.stringify({
         client_id: clientId,
         client_secret: clientSecret,
-        token: JSON.parse(sessionStorage.getItem('user')).token
+        token: JSON.parse(localStorage.getItem('user')).token
       })
     })
     if (response.status === 200) {
-      await sessionStorage.setItem('user', '');
+      await localStorage.setItem('user', '');
       dispatchEvent(logout());
     }
   });
@@ -26,7 +26,7 @@ const startLogout = () => {
 
 const startSignup = (email, password) => {
   return (async dispatchEvent => {
-    const response = await fetch(`${authURL}/signup`, {
+    await fetch(`${authURL}/signup`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -72,7 +72,7 @@ const startLoginWithEmailAndPassword = (email, password) => {
       expiresIn: user.expires_in,
       token: user.access_token
     }
-    await sessionStorage.setItem('user', JSON.stringify(userWithToken));
+    await localStorage.setItem('user', JSON.stringify(userWithToken));
     dispatchEvent(login(userWithToken));
     dispatchEvent(finishLoading());
     dispatchEvent(removeAlert());

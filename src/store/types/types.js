@@ -7,8 +7,10 @@ const types = {
   uiStartLoading: '[UI] Start loading',
   uiFinishLoading: '[UI] Finish loading',
 
-  periodSchoolLoadPeriodSchools: '[periodSchool] Load periods school',
-  
+  periodSchoolActive: '[Notes] Set active period school',
+  periodSchoolLoadAll: '[periodSchool] Load periods school',
+  periodSchoolAddNew: '[Notes] New period school',
+  periodSchoolLoad: '[Notes] Load periodSchool',
 }
 
 export {types}

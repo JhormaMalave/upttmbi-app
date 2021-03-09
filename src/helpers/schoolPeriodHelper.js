@@ -1,10 +1,14 @@
 import { apiURL } from "../rails/railsConfig";
 
-const getSchoolPeriodsFetch = async (params = {}) => {
-  const token = JSON.parse(localStorage.getItem('user')).token
-  const url = `${apiURL}/school_periods?${params.state && new URLSearchParams(params)}`;
+// SchoolPeriod URL
+const url = `${apiURL}/school_periods`;
+const token = localStorage.getItem('user') && JSON.parse(localStorage.getItem('user')).token;
 
-  const response = await fetch (url, {
+const getSchoolPeriodsFetch = async (params = {}) => {
+  const getParams = params.state && new URLSearchParams(params);
+  const urlWithParams = `${url}?${getParams}`;
+
+  const response = await fetch (urlWithParams, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -20,6 +24,28 @@ const getSchoolPeriodsFetch = async (params = {}) => {
   return schoolPeriods;
 }
 
+const postSchoolPeriodsFetch = async (params = {}) => {
+  const response = await fetch (url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Origin': '*',
+      'Authorization': `Bearer ${token}`
+    },
+    body:JSON.stringify(params),
+  });
+  //const school_period = response.json();
+  console.log(response)
+  if (response.status !== 201){
+    return false;
+  }
+  const schoolPeriod = await response.json();
+  return schoolPeriod;
+}
+
+
+
 export {
-  getSchoolPeriodsFetch
+  getSchoolPeriodsFetch,
+  postSchoolPeriodsFetch
 }

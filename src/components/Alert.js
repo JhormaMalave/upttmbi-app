@@ -9,7 +9,7 @@ const Alert = ({type, message}) => {
   }
 
   return (
-    <div className="relative m-2 inset-0 text-white px-6 py-4 border-0 rounded-lg relative mb-4 bg-red-400">
+    <div className="sticky inset-x-0 z-50 top-2 m-2 shadow-md inset-0 text-white px-6 py-4 border-0 rounded-lg relative mb-4 bg-red-400">
       <span className="text-xl inline-block mr-5 align-middle">
         <svg className="h-7 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />

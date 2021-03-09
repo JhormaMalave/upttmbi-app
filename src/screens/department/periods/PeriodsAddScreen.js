@@ -12,9 +12,7 @@ const PeriodsAddScreen = () => {
           </h2>
         </div>
       </div>
-      <div className="bg-white p-5 m-10 rounded-lg ">
-        <PeriodsForm />
-      </div>
+      <PeriodsForm />
     </div>
   )
 }

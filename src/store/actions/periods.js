@@ -1,4 +1,4 @@
-import { getSchoolPeriodsFetch } from "../../helpers/schoolPeriodHelper"
+import { getSchoolPeriodsFetch, postSchoolPeriodsFetch } from "../../helpers/schoolPeriodHelper";
 import { types } from "../types/types";
 
 const startLoadPeriodSchool = (params = {}) => {
@@ -8,9 +8,22 @@ const startLoadPeriodSchool = (params = {}) => {
   }
 }
 
+const startNewSchoolPeriod = (params = {}) => {
+  return async (dispatchEvent) => {
+    const schoolPeriod = await postSchoolPeriodsFetch(params);
+    console.log(schoolPeriod)
+    dispatchEvent(activeSchoolPeriod(schoolPeriod))
+  }
+}
+
+const activeSchoolPeriod = (schoolPeriod) => ({
+  type: types.periodSchoolActive,
+  payload: schoolPeriod,
+})
+
 const loadPeriodSchool = (schoolPeriod) => ({
-  type: types.periodSchoolLoadPeriodSchools,
+  type: types.periodSchoolLoadAll,
   payload: schoolPeriod
 })
 
-export {startLoadPeriodSchool}
+export {startLoadPeriodSchool, startNewSchoolPeriod}

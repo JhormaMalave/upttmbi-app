@@ -1,16 +1,18 @@
 import { apiURL } from "../rails/railsConfig";
 
-const getSchoolPeriodsFetch = async () => {
+const getSchoolPeriodsFetch = async (params = {}) => {
   const token = JSON.parse(localStorage.getItem('user')).token
+  const url = `${apiURL}/school_periods?${params.state && new URLSearchParams(params)}`;
 
-  const response = await fetch (`${apiURL}/school_periods`, {
+  const response = await fetch (url, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
       'Access-Control-Origin': '*',
       'Authorization': `Bearer ${token}`
-    }
+    },
   });
+
   if (response.status === 401){
     return false;
   }

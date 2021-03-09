@@ -1,24 +1,18 @@
 import React from 'react';
-import { Link, useHistory} from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { Link, useHistory} from 'react-router-dom';
 
 
-const PeriodsOptions = ({setOption, option}) => {
-  const history = useHistory()
-  
+const PeriodsOptions = React.memo(({state}) => {
+  const history = useHistory();
+
   const handleSelectOption = (option) => {
-    setOption(state => {
-      if (state === option) {
-        history.push('?');
-        return 'all';
-      } else {
-        history.push(`?state=${option} `)
-        return option
-      }
-    });
-    
+    if (option === state) {
+      history.push('?');
+    } else {
+      history.push(`?state=${option}`);
+    }    
   }
-
 
   return (
     <div className="container mt-4 mx-auto">
@@ -35,7 +29,7 @@ const PeriodsOptions = ({setOption, option}) => {
       </Link>
       <div 
         className={`card m-2 cursor-pointer bg-white border rounded-lg hover:shadow-md hover:border-opacity-0 transform hover:-translate-y-1 transition-all duration-200
-        ${ option === 'active' && 'text-green-800'  }
+        ${ state === 'active' && 'text-green-800'  }
         `}
         onClick={() => {handleSelectOption('active')}}
       >
@@ -48,7 +42,7 @@ const PeriodsOptions = ({setOption, option}) => {
       
       <div
         className={`card m-2 cursor-pointer bg-white border rounded-lg hover:shadow-md hover:border-opacity-0 transform hover:-translate-y-1 transition-all duration-200
-        ${ option === 'inactive' && 'text-yellow-600'  }
+        ${ state === 'inactive' && 'text-yellow-600'  }
         `}
         onClick={() => {handleSelectOption('inactive')}}
       >
@@ -61,11 +55,10 @@ const PeriodsOptions = ({setOption, option}) => {
     </div>
   </div>
   );
-}
+});
 
 PeriodsOptions.propTypes = {
-  setOption: PropTypes.func.isRequired,
-  option: PropTypes.string.isRequired,
+  state: PropTypes.string,
 }
 
 export default PeriodsOptions;

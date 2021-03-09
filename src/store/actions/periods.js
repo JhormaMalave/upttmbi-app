@@ -1,9 +1,9 @@
 import { getSchoolPeriodsFetch } from "../../helpers/schoolPeriodHelper"
 import { types } from "../types/types";
 
-const startLoadPeriodSchool = () => {
+const startLoadPeriodSchool = (params = {}) => {
   return async (dispatchEvent) => {
-    const schoolPeriod = await getSchoolPeriodsFetch();
+    const schoolPeriod = await getSchoolPeriodsFetch(params);
     dispatchEvent(loadPeriodSchool(schoolPeriod));
   }
 }

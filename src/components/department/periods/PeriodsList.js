@@ -5,12 +5,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { startLoadPeriodSchool } from '../../../store/actions/periods';
 import PeriodsLi from './PeriodsLi';
 
-const PeriodsList =React.memo(({filter}) => {
+const PeriodsList =React.memo(({state}) => {
   const dispatch = useDispatch();
 
+  console.log('se cargo')
+
   useEffect(() => {
-    dispatch(startLoadPeriodSchool())
-  }, [dispatch, filter])
+    dispatch(startLoadPeriodSchool({state}))
+  }, [dispatch, state])
 
   const { periods } = useSelector(state => state.schoolPeriod)
 
@@ -27,7 +29,7 @@ const PeriodsList =React.memo(({filter}) => {
 
 
 PeriodsList.propTypes = {
-  filter: PropTypes.string.isRequired,
+  state: PropTypes.string,
 }
 
 

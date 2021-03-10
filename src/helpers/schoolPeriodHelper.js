@@ -24,6 +24,21 @@ const getSchoolPeriodsFetch = async (params = {}) => {
   return schoolPeriods;
 }
 
+const getSchoolPeriodFetch = async (params = '') => {
+  const urlWithParams = `${url}/${params}`;
+
+  const response = await fetch (urlWithParams, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Origin': '*',
+      'Authorization': `Bearer ${token}`
+    },
+  });
+  
+  return response;
+}
+
 const postSchoolPeriodsFetch = async (params = {}) => {
   const response = await fetch (url, {
     method: 'POST',
@@ -47,5 +62,6 @@ const postSchoolPeriodsFetch = async (params = {}) => {
 
 export {
   getSchoolPeriodsFetch,
+  getSchoolPeriodFetch,
   postSchoolPeriodsFetch
 }

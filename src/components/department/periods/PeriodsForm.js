@@ -12,7 +12,7 @@ const PeriodsForm = () => {
     e.preventDefault();
 
     if (!validateForm()) {
-      return 0;
+      //return 0;
     }
 
     const params = {

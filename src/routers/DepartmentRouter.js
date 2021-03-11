@@ -25,6 +25,7 @@ import TeacherScreen from '../screens/department/teachers/TeacherScreen';
 import PeriodScreen from '../screens/department/periods/PeriodScreen';
 import PeriodsScreen from '../screens/department/periods/PeriodsScreen';
 import PeriodsAddScreen from '../screens/department/periods/PeriodsAddScreen';
+
 import Alert from '../components/Alert';
 
 const DepartmentRouter = () => {
@@ -53,7 +54,7 @@ const DepartmentRouter = () => {
                         <Route exact path="/department/teachers" component={ TeachersScreen } />
 
                         <Route exact path="/department/periods/new" component={ PeriodsAddScreen } />
-                        <Route path="/department/periods/:periodId" component={ PeriodScreen } />
+                        <Route exact path="/department/periods/:periodId" component={ PeriodScreen } />
                         <Route exact path="/department/periods" component={ PeriodsScreen } />
                     </Switch>
                 </main>

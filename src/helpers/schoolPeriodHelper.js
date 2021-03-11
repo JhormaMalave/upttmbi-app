@@ -39,6 +39,22 @@ const getSchoolPeriodFetch = async (params = '') => {
   return response;
 }
 
+const updatedSchoolPeriodFetch = async (id, params) => {
+  const urlWithId = `${url}/${id}`;
+
+  const response = await fetch(urlWithId, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Origin': '*',
+      'Authorization': `Bearer ${token}`
+    },
+    body: JSON.stringify(params),
+  });
+
+  return response;
+}
+
 const postSchoolPeriodsFetch = async (params = {}) => {
   const response = await fetch (url, {
     method: 'POST',
@@ -63,5 +79,6 @@ const postSchoolPeriodsFetch = async (params = {}) => {
 export {
   getSchoolPeriodsFetch,
   getSchoolPeriodFetch,
-  postSchoolPeriodsFetch
+  postSchoolPeriodsFetch,
+  updatedSchoolPeriodFetch,
 }

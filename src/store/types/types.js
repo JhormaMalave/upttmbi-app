@@ -10,6 +10,7 @@ const types = {
   periodSchoolActive: '[Notes] Set active period school',
   periodSchoolRemoveActive: '[Notes] Remove active period school',
   periodSchoolLoadAll: '[periodSchool] Load periods school',
+  periodSchoolUpdated: '[Notes] Updated school periods',
   periodSchoolAddNew: '[Notes] New period school',
   periodSchoolLoad: '[Notes] Load periodSchool',
 }

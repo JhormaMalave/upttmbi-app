@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { useForm } from '../../../hooks/useForm';
-import { startNewSchoolPeriod } from '../../../store/actions/periods';
+import { activeSchoolPeriod, startNewSchoolPeriod, startUpdatedSchoolPeriod } from '../../../store/actions/periods';
 import { setAlert } from '../../../store/actions/ui';
 
-const PeriodsForm = () => {
+const PeriodsForm = ({schoolPeriod, type}) => {
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
@@ -15,24 +15,28 @@ const PeriodsForm = () => {
       //return 0;
     }
 
-    const params = {
-      start_date: startDate,
-      end_date: endDate,
-      name,
-      state,
+    if (type === 'edit') {
+      dispatch(startUpdatedSchoolPeriod());
+    } else {
+      dispatch(startNewSchoolPeriod());
     }
+  }  
 
-    dispatch(startNewSchoolPeriod(params));
-  }
-
-  const {form, handleInputChange} = useForm({
-    startDate: new Date().toISOString().slice(0, 10),
-    endDate: '2021-06-09',
+  const initForm = schoolPeriod ? schoolPeriod : {
+    start_date: '',
+    end_date: '',
     name: '1',
     state: 'true'
-  });
-
-  const {startDate, endDate, name, state} = form
+  }
+  const {form, handleInputChange} = useForm(initForm);
+  const {start_date, end_date, name, state} = form;
+  
+  useEffect(() => {
+    dispatch(activeSchoolPeriod({
+      ...form
+    }));
+  }, [dispatch, form])
+  console.log(name)
 
   const validateForm = () => {
     if(name !== '1' || name !== '2' || name !== '3'){
@@ -48,26 +52,26 @@ const PeriodsForm = () => {
         <div className="flex flex-col my-2">
           <div className="-mx-3 md:flex mb-6">
             <div className="md:w-1/2 px-3 mb-6 md:mb-0">
-              <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" htmlFor="startDate">
+              <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" htmlFor="start_date">
                 Fecha de inicio
               </label>
               <input
                 className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                id="startDate"
-                name="startDate"
-                value={startDate}
+                id="start_date"
+                name="start_date"
+                value={start_date}
                 onChange={handleInputChange}
                 type="date" />
             </div>
             <div className="md:w-1/2 px-3">
-              <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" htmlFor="endDate">
+              <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" htmlFor="end_date">
                 Fecha de culminación
               </label>
               <input 
                 className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                id="endDate"
-                name="endDate"
-                value={endDate}
+                id="end_date"
+                name="end_date"
+                value={end_date}
                 onChange={handleInputChange}
                 type="date"
               />
@@ -112,14 +116,9 @@ const PeriodsForm = () => {
           </div>
           <button
             type="submit"
-            className="group relative w-40 flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+            className="group relative w-40 flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
           >
-            <span className="absolute left-0 inset-y-0 flex items-center pl-3">
-              <svg className="h-5 w-5 text-green-500 group-hover:text-green-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </span>
-            Agregar
+            Enviar
           </button>
         </div>
       </form>

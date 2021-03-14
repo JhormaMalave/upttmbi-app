@@ -123,6 +123,14 @@ const Sidebar = React.memo(() => {
             </Link>
             </div>
             <div>
+            <Link
+              className="text-gray-800 hover:text-gray-600 text-sm uppercase block mb-4 no-underline font-semibold"
+              to="/department/subjects"
+            >
+              <i className="fas fa-paint-brush text-gray-500 text-base"></i> U. Curriculares
+            </Link>
+            </div>
+            <div>
               <h6 className="md:min-w-full text-gray-600 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
                 Docentes
               </h6>

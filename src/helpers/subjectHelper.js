@@ -20,4 +20,19 @@ const getSubjectsFetch = async (params = {}) => {
   return response;
 }
 
-export { getSubjectsFetch }
+const postSubjectsFetch = async (params = {}) => {
+  console.log(params)
+  const response = await fetch (url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Origin': '*',
+      'Authorization': `Bearer ${token}`
+    },
+    body:JSON.stringify(params),
+  });
+
+  return response;
+}
+
+export { getSubjectsFetch, postSubjectsFetch }

@@ -13,8 +13,6 @@ const SubjectsList =React.memo(({urlParams}) => {
 
   const { subjects } = useSelector(state => state.subject)
 
-  console.log(subjects)
-
   return (                  
     <div className="bg-white shadow overflow-hidden sm:rounded-md mx-2 mt-5">
       <ul className="divide-y divide-gray-200">

@@ -1,8 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const SubjectsLi = ({id, name, value, state}) => {
-  
+const SubjectsLi = ({id, name, value, status}) => {
   return (
     <li>
       <Link to={`/department/subjects/${id}`} >
@@ -14,7 +13,7 @@ const SubjectsLi = ({id, name, value, state}) => {
               </p>
               <div className="ml-2 flex-shrink-0 flex">
                 {
-                  state ?
+                  status ?
                     <p className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                       Activo
                     </p>

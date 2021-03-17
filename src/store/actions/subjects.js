@@ -1,5 +1,5 @@
 import { types } from '../types/types';
-import { getSubjectsFetch } from '../../helpers/subjectHelper';
+import { getSubjectsFetch, postSubjectsFetch } from '../../helpers/subjectHelper';
 import { setAlert } from './ui'
 
 const startLoadSubjects = (params = '') => {
@@ -17,8 +17,26 @@ const startLoadSubjects = (params = '') => {
   }
 }
 
+const startNewSubject = () => {
+  return async (dispatchEvent, getState) => {
+    const { active } = getState().subject;
+    const params = active
+    const response = await postSubjectsFetch(params);
+    console.log(response.json)
+    switch (response.status) {
+      case 200:
+        const subject = await response.json();
+        dispatchEvent(loadSubject(subject));
+        break;
+      default:
+        dispatchEvent(setAlert('error', 'Ocurrió un error al crear las asignatura'));
+        break;
+    }
+  }
+}
+
 const activeSubject = (subject) => ({
-  type: types.periodSchoolActive,
+  type: types.subjectActive,
   payload: subject,
 });
 
@@ -31,4 +49,9 @@ const loadSubject = (subject) => ({
   payload: subject
 });
 
-export {startLoadSubjects}
+export {
+  activeSubject,
+  removeActiveSubject,
+  startLoadSubjects,
+  startNewSubject,
+}

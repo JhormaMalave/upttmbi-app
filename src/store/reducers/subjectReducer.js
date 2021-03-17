@@ -18,9 +18,11 @@ const subjectReducer = (state = initialState, action) => {
         active: {
           id: action.payload.id,
           name: String(action.payload.name),
+          value: String(action.payload.value),
+          curricular_unit_type_id: action.payload.curricular_unit_type_id,
+          duration: action.payload.duration,
           state: action.payload.state,
-          start_date: action.payload.start_date,
-          end_date: action.payload.end_date || '',
+          course_id: action.payload.course_id
         }
       }
     case types.subjectRemoveActive:

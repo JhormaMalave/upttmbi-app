@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import queryString from 'query-string';
 
 import SubjectsFilter from '../../../components/department/subjects/SubjectsFilter';
 import SubjectsList from '../../../components/department/subjects/SubjectsList';
 import SubjectsOptions from '../../../components/department/subjects/SubjectsOptions';
+import SubjectsForm from '../../../components/department/subjects/SubjectsForm';
 
 const SubjectsScreen = () => {
 
   const urlParams = queryString.parse(useLocation().search);
 
+  const [showHiddeForm, setShowHiddeForm] = useState(false);
 
   return (
     <>
@@ -23,9 +25,16 @@ const SubjectsScreen = () => {
           Las unidades curriculares hacen referencia a las asignaturas de la malla academica, cuando la malla cambia, debes de cambiar el estado de la asignatura. <strong className="text-indigo-200">Las unidades curriculares se crean una unica vez</strong></h2>
         </div>
       </div>
-      <SubjectsOptions />
-      <SubjectsFilter />
-      <SubjectsList urlParams={urlParams} />
+      <SubjectsOptions showHiddeForm={setShowHiddeForm} />
+      {
+        showHiddeForm ?
+          <SubjectsForm />
+          :
+          <>
+            <SubjectsFilter/>
+            <SubjectsList urlParams={urlParams} />
+          </>
+      }
     </>
   );
 }

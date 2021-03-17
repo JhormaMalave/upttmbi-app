@@ -1,11 +1,12 @@
 import React from 'react';
 
-const SubjectsOptions = React.memo(() => {
+const SubjectsOptions = React.memo(({ showHiddeForm }) => {
 
   return (
     <div className="container mx-auto">
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
       <button
+        onClick={() => {showHiddeForm(state => !state)}}
         className="card m-2 cursor-pointer bg-green-200 border rounded-lg hover:shadow-md hover:border-opacity-0 transform hover:-translate-y-1 transition-all duration-200"
       >
         <div className="m-3">

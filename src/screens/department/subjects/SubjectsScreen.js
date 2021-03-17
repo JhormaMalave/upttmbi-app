@@ -1,8 +1,15 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
+import queryString from 'query-string';
+
 import SubjectsFilter from '../../../components/department/subjects/SubjectsFilter';
+import SubjectsList from '../../../components/department/subjects/SubjectsList';
 import SubjectsOptions from '../../../components/department/subjects/SubjectsOptions';
 
 const SubjectsScreen = () => {
+
+  const urlParams = queryString.parse(useLocation().search);
+
 
   return (
     <>
@@ -18,6 +25,7 @@ const SubjectsScreen = () => {
       </div>
       <SubjectsOptions />
       <SubjectsFilter />
+      <SubjectsList urlParams={urlParams} />
     </>
   );
 }

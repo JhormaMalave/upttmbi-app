@@ -13,6 +13,13 @@ const types = {
   periodSchoolUpdated: '[Notes] Updated school periods',
   periodSchoolAddNew: '[Notes] New period school',
   periodSchoolLoad: '[Notes] Load periodSchool',
+
+  subjectActive: '[Notes] Set active subject',
+  subjectRemoveActive: '[Notes] Remove active subject',
+  subjectLoadAll: '[periodSchool] Load subject',
+  subjectUpdated: '[Notes] Updated subject',
+  subjectAddNew: '[Notes] New subject',
+  subjectLoad: '[Notes] Load subject',
 }
 
 export {types}

@@ -14,7 +14,6 @@ import SectionsScreen from '../screens/department/sections/SectionsScreen';
 import SectionsAddScreen from '../screens/department/sections/SectionsAddScreen';
 import SectionScreen from '../screens/department/sections/SectionScreen';
 // Subjects routes
-import SubjectAddScreen from '../screens/department/subjects/SubjectAddScreen';
 import SubjectScreen from '../screens/department/subjects/SubjectScreen';
 import SubjectsScreen from '../screens/department/subjects/SubjectsScreen';
 // Teachers routes
@@ -39,8 +38,6 @@ const DepartmentRouter = () => {
                     { alert && <Alert {...alert} /> }
                     <Switch>
                         <Route exact path="/department/home" component={DepartmentScreen} />
-
-                        <Route exact path="/department/subjects/new" component={ SubjectAddScreen } />
                         <Route exact path="/department/subjects/:subjectId" component={ SubjectScreen } />
                         <Route exact path="/department/subjects" component={ SubjectsScreen } />
 

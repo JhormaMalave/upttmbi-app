@@ -164,30 +164,6 @@ const Sidebar = React.memo(() => {
             </div>
             <div>
               <h6 className="md:min-w-full text-gray-600 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
-                Asignaturas
-              </h6>
-              {/* Navigation */}
-              <ul className="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
-                <li className="inline-flex">
-                  <Link
-                    className="text-gray-800 hover:text-gray-600 text-sm block mb-4 no-underline font-semibold"
-                    to="/department/subjects/new"
-                  >
-                    <i className="fas fa-paint-brush mr-2 text-gray-500 text-base"></i> Agregar
-                  </Link>
-                </li>
-                <li className="inline-flex">
-                  <Link
-                    className="text-gray-800 hover:text-gray-600 text-sm block mb-4 no-underline font-semibold"
-                    to="/department/subjects"
-                  >
-                    <i className="fab fa-css3-alt mr-2 text-gray-500 text-base"></i> Mostrar
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h6 className="md:min-w-full text-gray-600 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
                 Secciones
               </h6>
               {/* Navigation */}

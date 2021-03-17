@@ -1,4 +1,4 @@
-import React from 'react'
+/*import React from 'react'
 import {trajects} from '../../data/trajects'
 
 const SelectTraject = ({setTraject}) => {
@@ -22,4 +22,4 @@ const SelectTraject = ({setTraject}) => {
   )
 }
 
-export default SelectTraject;
+export default SelectTraject;/*/

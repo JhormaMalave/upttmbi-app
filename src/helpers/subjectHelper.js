@@ -20,6 +20,21 @@ const getSubjectsFetch = async (params = {}) => {
   return response;
 }
 
+const getSubjectFetch = async (params = '') => {
+  const urlWithParams = `${url}/${params}`;
+
+  const response = await fetch (urlWithParams, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Origin': '*',
+      'Authorization': `Bearer ${token}`
+    },
+  });
+  
+  return response;
+}
+
 const postSubjectsFetch = async (params = {}) => {
   console.log(params)
   const response = await fetch (url, {
@@ -35,4 +50,4 @@ const postSubjectsFetch = async (params = {}) => {
   return response;
 }
 
-export { getSubjectsFetch, postSubjectsFetch }
+export { getSubjectsFetch, getSubjectFetch, postSubjectsFetch }

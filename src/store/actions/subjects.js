@@ -1,5 +1,5 @@
 import { types } from '../types/types';
-import { getSubjectsFetch, postSubjectsFetch } from '../../helpers/subjectHelper';
+import { getSubjectFetch, getSubjectsFetch, postSubjectsFetch } from '../../helpers/subjectHelper';
 import { setAlert } from './ui'
 
 const startLoadSubjects = (params = '') => {
@@ -12,6 +12,24 @@ const startLoadSubjects = (params = '') => {
         break;
       default:
         dispatchEvent(setAlert('error', 'Ocurrió un error al obtener las asignaturas'));
+        break;
+    }
+  }
+}
+
+const startLoadSubject = (params = '') => {
+  return async (dispatchEvent) => {
+    const response = await getSubjectFetch(params);
+    switch (response.status) {
+      case 404:
+        dispatchEvent(setAlert('error', 'El período no fue encontrado'));
+        break;
+      case 200:
+        const subject = await response.json();
+        dispatchEvent(activeSubject(subject));
+        break;
+      default:
+        dispatchEvent(setAlert('error', 'Ocurrió un error al obtener el período'));
         break;
     }
   }
@@ -53,5 +71,6 @@ export {
   activeSubject,
   removeActiveSubject,
   startLoadSubjects,
+  startLoadSubject,
   startNewSubject,
 }

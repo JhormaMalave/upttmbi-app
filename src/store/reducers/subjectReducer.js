@@ -21,7 +21,7 @@ const subjectReducer = (state = initialState, action) => {
           value: String(action.payload.value),
           curricular_unit_type_id: action.payload.curricular_unit_type_id,
           duration: action.payload.duration,
-          state: action.payload.state,
+          status: action.payload.status,
           course_id: action.payload.course_id
         }
       }

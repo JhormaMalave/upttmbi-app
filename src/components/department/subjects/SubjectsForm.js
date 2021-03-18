@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useForm } from '../../../hooks/useForm';
-import { activeSubject, startNewSubject } from '../../../store/actions/subjects';
+import { activeSubject, startNewSubject, startUpdatedSubject } from '../../../store/actions/subjects';
 
 const SubjectsForm = ({ subject, type }) => {
   const dispatch = useDispatch();
@@ -42,7 +42,7 @@ const SubjectsForm = ({ subject, type }) => {
     e.preventDefault();
 
     if (type === 'edit') {
-      //dispatch(startUpdatedSchoolPeriod());
+      dispatch(startUpdatedSubject());
     } else {
       dispatch(startNewSubject());
     }

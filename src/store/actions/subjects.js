@@ -1,5 +1,10 @@
 import { types } from '../types/types';
-import { getSubjectFetch, getSubjectsFetch, postSubjectsFetch } from '../../helpers/subjectHelper';
+import {
+  getSubjectFetch,
+  getSubjectsFetch,
+  postSubjectsFetch,
+  updatedSubjectFetch,
+} from '../../helpers/subjectHelper';
 import { setAlert } from './ui'
 
 const startLoadSubjects = (params = '') => {
@@ -53,6 +58,27 @@ const startNewSubject = () => {
   }
 }
 
+const startUpdatedSubject = () => {
+  return async (dispatchEvent, getState) => {
+    const { active } = getState().subject;
+    
+    const params = active;
+    const response = await updatedSubjectFetch(active.id, params);
+    switch (response.status) {
+      case 404:
+        dispatchEvent(setAlert('error', 'La asignatura no fue encontrada'));
+        break;
+      case 200:
+        const subject = await response.json();
+        dispatchEvent(activeSubject(subject));
+        break;
+      default:
+        dispatchEvent(setAlert('error', 'Ocurrió un error al actualizar la asignatura'));
+        break;
+    }
+  }
+}
+
 const activeSubject = (subject) => ({
   type: types.subjectActive,
   payload: subject,
@@ -73,4 +99,5 @@ export {
   startLoadSubjects,
   startLoadSubject,
   startNewSubject,
+  startUpdatedSubject,
 }

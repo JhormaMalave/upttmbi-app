@@ -35,8 +35,23 @@ const getSubjectFetch = async (params = '') => {
   return response;
 }
 
-const postSubjectsFetch = async (params = {}) => {
+const updatedSubjectFetch = async (id, params) => {
+  const urlWithId = `${url}/${id}`;
   console.log(params)
+  const response = await fetch(urlWithId, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Origin': '*',
+      'Authorization': `Bearer ${token}`
+    },
+    body: JSON.stringify(params),
+  });
+
+  return response;
+}
+
+const postSubjectsFetch = async (params = {}) => {
   const response = await fetch (url, {
     method: 'POST',
     headers: {
@@ -50,4 +65,4 @@ const postSubjectsFetch = async (params = {}) => {
   return response;
 }
 
-export { getSubjectsFetch, getSubjectFetch, postSubjectsFetch }
+export { getSubjectsFetch, getSubjectFetch, postSubjectsFetch, updatedSubjectFetch }

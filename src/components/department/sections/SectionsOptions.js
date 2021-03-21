@@ -25,6 +25,7 @@ const SectionsOptions = React.memo(({ showHiddeForm }) => {
         </select>
       </div>
       <button
+        onClick={() => {showHiddeForm(state => !state)}}
         type="submit"
         className="group relative w-40 flex justify-center py-2 mr-2 px-4 border border-transparent text-sm font-medium rounded-md text-green-500 bg-white hover:bg-green-600 hover:text-white"
       >

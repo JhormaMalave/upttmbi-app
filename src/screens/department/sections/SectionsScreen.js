@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import queryString from 'query-string';
 import SectionsOptions from '../../../components/department/sections/SectionsOptions';
+import SectionsForm from '../../../components/department/sections/SectionsForm';
 
 const SectionsScreen = () => {
 
@@ -22,6 +23,14 @@ const SectionsScreen = () => {
         </div>
       </div>
       <SectionsOptions showHiddeForm={setShowHiddeForm} />
+      {
+        showHiddeForm ?
+          <SectionsForm />
+          :
+          <>
+            31
+          </>
+      }
     </>
   );
 }

@@ -2,6 +2,7 @@ import { createStore, combineReducers, applyMiddleware, compose} from 'redux';
 import thunk from 'redux-thunk';
 import { authReducer } from './reducers/authReducer';
 import { schoolPeriodReducer } from './reducers/schoolPeriodReducer';
+import { sectionReducer } from './reducers/sectionReducer';
 import { subjectReducer } from './reducers/subjectReducer';
 import { uiReducer } from './reducers/uiReducer';
 
@@ -10,6 +11,7 @@ const reducers = combineReducers({
   ui: uiReducer,
   schoolPeriod: schoolPeriodReducer,
   subject: subjectReducer,
+  section: sectionReducer,
 });
 
 const composeEnhancers = (typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;

@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import queryString from 'query-string';
 import SectionsOptions from '../../../components/department/sections/SectionsOptions';
 import SectionsForm from '../../../components/department/sections/SectionsForm';
+import Sections from '../../../components/department/sections/Sections';
 
 const SectionsScreen = () => {
 
@@ -28,7 +29,7 @@ const SectionsScreen = () => {
           <SectionsForm />
           :
           <>
-            31
+            <Sections urlParams={urlParams} />
           </>
       }
     </>

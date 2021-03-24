@@ -1,7 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { useForm } from '../../../hooks/useForm';
+import { activeSection, startNewSection } from '../../../store/actions/sections';
 
 const SectionsForm = ({section}) => {
+  const dispatch = useDispatch();
+
   // Replace this for API data
   const trimesters = [
     {id: '1', name: 1},
@@ -33,6 +37,7 @@ const SectionsForm = ({section}) => {
   ]
 
   const initForm = section ? section : {
+    id: '',
     name: '',
     shift_id: '',
     trimester: '',
@@ -52,10 +57,28 @@ const SectionsForm = ({section}) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    console.log(form)
+    dispatch(startNewSection());
   }
 
+  useEffect(()=>{
+    dispatch(activeSection({
+      id: form.id || null,
+      name: form.name,
+      trimester: form.trimester,
+      shift: {
+        id: form.shift_id || null,
+        name: null
+      },
+      course: {
+        id: form.course_id || null,
+        name: null,
+      },
+      school_period: {
+        id: form.school_period_id,
+        name: null
+      }
+    }));
+  }, [form, dispatch]);
 
   return (
     <div className="bg-white p-5 m-2 mt-5 rounded-lg ">

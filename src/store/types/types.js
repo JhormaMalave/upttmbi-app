@@ -20,6 +20,13 @@ const types = {
   subjectUpdated: '[Notes] Updated subject',
   subjectAddNew: '[Notes] New subject',
   subjectLoad: '[Notes] Load subject',
+
+  sectionActive: '[Notes] Set active section',
+  sectionRemoveActive: '[Notes] Remove active section',
+  sectionLoadAll: '[periodSchool] Load section',
+  sectionUpdated: '[Notes] Updated section',
+  sectionAddNew: '[Notes] New section',
+  sectionLoad: '[Notes] Load section',
 }
 
 export {types}

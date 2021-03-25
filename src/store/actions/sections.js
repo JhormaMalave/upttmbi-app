@@ -25,6 +25,7 @@ const startLoadSections = (params = '') => {
 const startLoadSection = (params = '') => {
   return async (dispatchEvent) => {
     const response = await getSectionFetch(params);
+
     switch (response.status) {
       case 404:
         dispatchEvent(setAlert('error', 'El período no fue encontrado'));
@@ -40,9 +41,8 @@ const startLoadSection = (params = '') => {
   }
 }
 
-const startNewSection = () => {
-  return async (dispatchEvent, getState) => {
-    const { active } = getState().section;
+const startNewSection = (active) => {
+  return async (dispatchEvent) => {
     const params = {
       section: {
         name: active.name,
@@ -65,15 +65,22 @@ const startNewSection = () => {
   }
 }
 
-const startUpdatedSection = () => {
-  return async (dispatchEvent, getState) => {
-    const { active } = getState().section;
-    
-    const params = active;
+const startUpdatedSection = (active) => {
+  return async (dispatchEvent) => {    
+    const params = {
+      section: {
+        id: active.id,
+        name: active.name,
+        trimester: active.trimester,
+        shift_id: active.shift.id,
+        school_period_id: active.school_period.id,
+        course_id: active.course.id,
+      }
+    };
     const response = await updatedSectionFetch(active.id, params);
     switch (response.status) {
       case 404:
-        dispatchEvent(setAlert('error', 'La asignatura no fue encontrada'));
+        dispatchEvent(setAlert('error', 'La sección no fue encontrada'));
         break;
       case 200:
         const section = await response.json();

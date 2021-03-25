@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useForm } from '../../../hooks/useForm';
-import { activeSection, startNewSection } from '../../../store/actions/sections';
+import { startNewSection, startUpdatedSection } from '../../../store/actions/sections';
 
-const SectionsForm = ({section}) => {
+const SectionsForm = ({section, type}) => {
   const dispatch = useDispatch();
+  const [formValue, setFormValue] = useState();
 
   // Replace this for API data
   const trimesters = [
@@ -34,7 +35,7 @@ const SectionsForm = ({section}) => {
     {id: '1', name: 'Mañana'},
     {id: '2', name: 'Tarde'},
     {id: '3', name: 'Fin de semana'},
-  ]
+  ];
 
   const initForm = section ? section : {
     id: '',
@@ -43,7 +44,7 @@ const SectionsForm = ({section}) => {
     trimester: '',
     course_id: '',
     school_period_id: '',
-  }
+  };
 
   const {form, handleInputChange} = useForm(initForm);
 
@@ -57,17 +58,22 @@ const SectionsForm = ({section}) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(startNewSection());
+
+    if (type === 'edit') {
+      dispatch(startUpdatedSection(formValue));
+    } else {
+      dispatch(startNewSection(formValue));
+    }
   }
 
   useEffect(()=>{
-    dispatch(activeSection({
+    setFormValue({
       id: form.id || null,
       name: form.name,
       trimester: form.trimester,
       shift: {
         id: form.shift_id || null,
-        name: null
+        nombre: null
       },
       course: {
         id: form.course_id || null,
@@ -77,8 +83,8 @@ const SectionsForm = ({section}) => {
         id: form.school_period_id,
         name: null
       }
-    }));
-  }, [form, dispatch]);
+    });
+  }, [form]);
 
   return (
     <div className="bg-white p-5 m-2 mt-5 rounded-lg ">
@@ -190,7 +196,6 @@ const SectionsForm = ({section}) => {
               Enviar
             </button>
           </div>
-          
         </div>
       </form>
     </div>

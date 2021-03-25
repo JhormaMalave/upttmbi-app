@@ -20,8 +20,8 @@ const sectionReducer = (state = initialState, action) => {
           name: action.payload.name,
           trimester: action.payload.trimester,
           shift: {
-            id: action.payload.shift.id,
-            name: action.payload.shift.name,
+            id: action.payload.shift_id,
+            nombre: action.payload.shift.nombre,
           },
           course: {
             id: action.payload.course.id,

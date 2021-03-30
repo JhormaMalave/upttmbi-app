@@ -2,7 +2,10 @@ import { apiURL } from "../rails/railsConfig";
 
 // Sections URL
 const url = `${apiURL}/sections`;
-const token = localStorage.getItem('user') && JSON.parse(localStorage.getItem('user')).token;
+
+const getToken = () => {
+  return localStorage.getItem('user') && JSON.parse(localStorage.getItem('user')).token;
+}
 
 const getSectionsFetch = async (params = {}) => {
   const getParams = params && new URLSearchParams(params);
@@ -13,7 +16,7 @@ const getSectionsFetch = async (params = {}) => {
     headers: {
       'Content-Type': 'application/json',
       'Access-Control-Origin': '*',
-      'Authorization': `Bearer ${token}`
+      'Authorization': `Bearer ${getToken()}`
     },
   });
 
@@ -28,7 +31,7 @@ const getSectionFetch = async (params = '') => {
     headers: {
       'Content-Type': 'application/json',
       'Access-Control-Origin': '*',
-      'Authorization': `Bearer ${token}`
+      'Authorization': `Bearer ${getToken()}`
     },
   });
   
@@ -43,7 +46,7 @@ const updatedSectionFetch = async (id, params) => {
     headers: {
       'Content-Type': 'application/json',
       'Access-Control-Origin': '*',
-      'Authorization': `Bearer ${token}`
+      'Authorization': `Bearer ${getToken()}`
     },
     body: JSON.stringify(params),
   });
@@ -57,7 +60,7 @@ const postSectionsFetch = async (params = {}) => {
     headers: {
       'Content-Type': 'application/json',
       'Access-Control-Origin': '*',
-      'Authorization': `Bearer ${token}`
+      'Authorization': `Bearer ${getToken()}`
     },
     body:JSON.stringify(params),
   });

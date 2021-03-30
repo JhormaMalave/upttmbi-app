@@ -9,8 +9,16 @@ import { setAlert } from "./ui";
 
 const startLoadSchoolPeriods = (params = {}) => {
   return async (dispatchEvent) => {
-    const schoolPeriods = await getSchoolPeriodsFetch(params);
-    dispatchEvent(loadPeriodSchool(schoolPeriods));
+    const response = await getSchoolPeriodsFetch(params);
+    switch (response.status) {
+      case 200:
+        const schoolPeriods = await response.json();
+        dispatchEvent(loadPeriodSchool(schoolPeriods));
+        break;
+      default:
+        dispatchEvent(setAlert('error', 'Ocurrió un error al obtener los periodos escolares'));
+        break;
+    }
   }
 }
 

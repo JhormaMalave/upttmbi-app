@@ -16,7 +16,7 @@ const startLoadSections = (params = '') => {
         dispatchEvent(loadSection(section));
         break;
       default:
-        dispatchEvent(setAlert('error', 'Ocurrió un error al obtener las asignaturas'));
+        dispatchEvent(setAlert('error', 'Ocurrió un error al obtener las secciones'));
         break;
     }
   }
@@ -28,14 +28,14 @@ const startLoadSection = (params = '') => {
 
     switch (response.status) {
       case 404:
-        dispatchEvent(setAlert('error', 'El período no fue encontrado'));
+        dispatchEvent(setAlert('error', 'La seccion no fue encontrada'));
         break;
       case 200:
         const section = await response.json();
         dispatchEvent(activeSection(section));
         break;
       default:
-        dispatchEvent(setAlert('error', 'Ocurrió un error al obtener el período'));
+        dispatchEvent(setAlert('error', 'Ocurrió un error al obtener las secciones'));
         break;
     }
   }
@@ -59,7 +59,7 @@ const startNewSection = (active) => {
         dispatchEvent(loadSection(section));
         break;
       default:
-        dispatchEvent(setAlert('error', 'Ocurrió un error al crear las asignatura'));
+        dispatchEvent(setAlert('error', 'Ocurrió un error al crear la sección'));
         break;
     }
   }

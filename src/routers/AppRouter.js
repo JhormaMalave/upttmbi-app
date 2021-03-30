@@ -4,7 +4,7 @@ import {
     Switch,
     Redirect
 } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 
 import DepartmentRouter from './DepartmentRouter';
@@ -18,7 +18,24 @@ const AppRouter = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [checking, setChecking] = useState(true)
     const dispatch = useDispatch();
+    const auth = useSelector(state => state.auth)
 
+    useEffect(() => {
+        if (auth.token) {
+            setIsLoggedIn(true)
+        } else {
+            if (localStorage.getItem('user') !== '') {
+                const userLocalStorage = JSON.parse(localStorage.getItem('user'));
+                dispatch(login(userLocalStorage))
+                setIsLoggedIn(true);
+            } else {
+                setIsLoggedIn(false);
+            }
+        }
+        setChecking(false)
+    }, [auth, setIsLoggedIn, dispatch])
+
+/*
     useEffect(() => {
         if (localStorage.getItem('user')){
             const user = JSON.parse(localStorage.getItem('user')) || '';
@@ -26,9 +43,12 @@ const AppRouter = () => {
             setIsLoggedIn(true);
         }else{
             setIsLoggedIn(false);
+            localStorage.setItem('user', '')
         }
         setChecking(false);
     }, [setChecking, setIsLoggedIn, dispatch])
+*/
+
 
     if(checking) {
         return (

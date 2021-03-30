@@ -2,8 +2,10 @@ import { apiURL } from "../rails/railsConfig";
 
 // SchoolPeriod URL
 const url = `${apiURL}/school_periods`;
-const token = localStorage.getItem('user') && JSON.parse(localStorage.getItem('user')).token;
 
+const getToken = () => {
+  return localStorage.getItem('user') && JSON.parse(localStorage.getItem('user')).token;
+}
 const getSchoolPeriodsFetch = async (params = {}) => {
   const getParams = params.state && new URLSearchParams(params);
   const urlWithParams = `${url}?${getParams}`;
@@ -13,15 +15,11 @@ const getSchoolPeriodsFetch = async (params = {}) => {
     headers: {
       'Content-Type': 'application/json',
       'Access-Control-Origin': '*',
-      'Authorization': `Bearer ${token}`
+      'Authorization': `Bearer ${getToken()}`
     },
   });
 
-  if (response.status === 401){
-    return false;
-  }
-  const schoolPeriods = await response.json()
-  return schoolPeriods;
+  return response;
 }
 
 const getSchoolPeriodFetch = async (params = '') => {
@@ -32,7 +30,7 @@ const getSchoolPeriodFetch = async (params = '') => {
     headers: {
       'Content-Type': 'application/json',
       'Access-Control-Origin': '*',
-      'Authorization': `Bearer ${token}`
+      'Authorization': `Bearer ${getToken()}`
     },
   });
   
@@ -47,7 +45,7 @@ const updatedSchoolPeriodFetch = async (id, params) => {
     headers: {
       'Content-Type': 'application/json',
       'Access-Control-Origin': '*',
-      'Authorization': `Bearer ${token}`
+      'Authorization': `Bearer ${getToken()}`
     },
     body: JSON.stringify(params),
   });
@@ -61,7 +59,7 @@ const postSchoolPeriodsFetch = async (params = {}) => {
     headers: {
       'Content-Type': 'application/json',
       'Access-Control-Origin': '*',
-      'Authorization': `Bearer ${token}`
+      'Authorization': `Bearer ${getToken()}`
     },
     body:JSON.stringify(params),
   });
@@ -73,7 +71,6 @@ const postSchoolPeriodsFetch = async (params = {}) => {
   const schoolPeriod = await response.json();
   return schoolPeriod;
 }
-
 
 
 export {

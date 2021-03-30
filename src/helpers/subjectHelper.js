@@ -2,8 +2,10 @@ import { apiURL } from "../rails/railsConfig";
 
 // Subjects URL
 const url = `${apiURL}/curricular_units`;
-const token = localStorage.getItem('user') && JSON.parse(localStorage.getItem('user')).token;
 
+const getToken = () => {
+  return localStorage.getItem('user') && JSON.parse(localStorage.getItem('user')).token;
+}
 const getSubjectsFetch = async (params = {}) => {
   const getParams = params && new URLSearchParams(params);
   const urlWithParams = `${url}?${getParams}`;
@@ -13,7 +15,7 @@ const getSubjectsFetch = async (params = {}) => {
     headers: {
       'Content-Type': 'application/json',
       'Access-Control-Origin': '*',
-      'Authorization': `Bearer ${token}`
+      'Authorization': `Bearer ${getToken()}`
     },
   });
 
@@ -28,7 +30,7 @@ const getSubjectFetch = async (params = '') => {
     headers: {
       'Content-Type': 'application/json',
       'Access-Control-Origin': '*',
-      'Authorization': `Bearer ${token}`
+      'Authorization': `Bearer ${getToken()}`
     },
   });
   
@@ -43,7 +45,7 @@ const updatedSubjectFetch = async (id, params) => {
     headers: {
       'Content-Type': 'application/json',
       'Access-Control-Origin': '*',
-      'Authorization': `Bearer ${token}`
+      'Authorization': `Bearer ${getToken()}`
     },
     body: JSON.stringify(params),
   });
@@ -57,7 +59,7 @@ const postSubjectsFetch = async (params = {}) => {
     headers: {
       'Content-Type': 'application/json',
       'Access-Control-Origin': '*',
-      'Authorization': `Bearer ${token}`
+      'Authorization': `Bearer ${getToken()}`
     },
     body:JSON.stringify(params),
   });

@@ -1,5 +1,7 @@
 import React from 'react';
 import TeachersFilter from '../../../components/department/teachers/TeachersFilter';
+import TeachersOptions from '../../../components/department/teachers/TeachersOptions';
+
 //import TeachersTable from '../../../components/department/teachers/TeachersTable';
 
 const TeachersScreen = () => {
@@ -15,7 +17,7 @@ const TeachersScreen = () => {
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam consectetur est commodi, minima aspernatur error velit quos. Itaque recusandae perspiciatis <strong className="text-indigo-200">blanditiis minus tempore sed amet sequi eveniet </strong></h2>
         </div>
       </div>
-      
+      <TeachersOptions />
       <TeachersFilter />
       
     </>

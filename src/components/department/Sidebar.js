@@ -120,7 +120,7 @@ const Sidebar = React.memo(() => {
                 className="text-gray-800 hover:text-gray-600 text-sm uppercase block mb-2 no-underline font-semibold"
                 to="/department/periods"
               >
-                <i class="far fa-calendar-alt text-base"></i> Periodo
+                <i className="far fa-calendar-alt text-base"></i> Periodo
               </NavLink>
             </div>
             <div>
@@ -129,7 +129,7 @@ const Sidebar = React.memo(() => {
                 className="text-gray-800 hover:text-gray-600 text-sm uppercase block mb-2 no-underline font-semibold"
                 to="/department/subjects"
               >
-                <i class="fas fa-book text-base"></i> U. Curriculares
+                <i className="fas fa-book text-base"></i> U. Curriculares
               </NavLink>
             </div>
             <div>
@@ -138,7 +138,7 @@ const Sidebar = React.memo(() => {
                 className="text-gray-800 hover:text-gray-600 text-sm uppercase block mb-2 no-underline font-semibold"
                 to="/department/sections"
               >
-                <i class="fas fa-list-ol text-base"></i> Secciones
+                <i className="fas fa-list-ol text-base"></i> Secciones
               </NavLink>
             </div>
             <div>
@@ -147,7 +147,7 @@ const Sidebar = React.memo(() => {
                 className="text-gray-800 hover:text-gray-600 text-sm uppercase block mb-4 no-underline font-semibold"
                 to="/department/teachers"
               >
-                <i class="fas fa-chalkboard-teacher text-base"></i> Docentes
+                <i className="fas fa-chalkboard-teacher text-base"></i> Docentes
               </NavLink>
             </div>
           </div>

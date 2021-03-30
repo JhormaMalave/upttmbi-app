@@ -11,7 +11,7 @@ const TeachersOptions = React.memo(() => {
         <div className="m-3">
           <div className="flex flex-row justify-between">
             <h2 className="text-lg mb-2">Agregar </h2>
-            <i class="fas fa-plus-circle text-sm"></i>
+            <i className="fas fa-plus-circle text-sm"></i>
           </div>
           <p className="font-light font-mono text-sm text-gray-700 hover:text-gray-900 transition-all duration-200">Debes agregar una unidad curricular antes de utilizarla.</p>
         </div>
@@ -24,7 +24,7 @@ const TeachersOptions = React.memo(() => {
         <div className="m-3">
           <div className="flex flex-row justify-between">
             <h2 className="text-lg mb-2">Mostrar </h2>
-            <i class="fas fa-list-ul text-sm"></i>
+            <i className="fas fa-list-ul text-sm"></i>
           </div>
         <p className="font-light font-mono text-sm text-gray-700 hover:text-gray-900 transition-all duration-200">Muestra un listado de los docentes registrados.</p>
         </div>
@@ -37,7 +37,7 @@ const TeachersOptions = React.memo(() => {
         <div className="m-3">
           <div className="flex flex-row justify-between">
             <h2 className="text-lg mb-2">Docentes Trujillo </h2>
-            <i class="far fa-file-excel text-sm"></i>
+            <i className="far fa-file-excel text-sm"></i>
           </div>
           <p className="font-light font-mono text-sm text-gray-700 hover:text-gray-900 transition-all duration-200">Reporte de los docentes registrados en el nucleo "Barbarita de la Torre".</p>
         </div>
@@ -50,7 +50,7 @@ const TeachersOptions = React.memo(() => {
         <div className="m-3">
           <div className="flex flex-row justify-between">
             <h2 className="text-lg mb-2">Caracterización de dep.</h2>
-            <i class="far fa-file-excel text-sm"></i>
+            <i className="far fa-file-excel text-sm"></i>
           </div>
           <p className="font-light font-mono text-sm text-gray-700 hover:text-gray-900 transition-all duration-200">Reporte de caracterización del dep. de informática.</p>
         </div>
@@ -63,7 +63,7 @@ const TeachersOptions = React.memo(() => {
         <div className="m-3">
           <div className="flex flex-row justify-between">
             <h2 className="text-lg mb-2">Reporte general</h2>
-            <i class="far fa-file-excel text-sm"></i>
+            <i className="far fa-file-excel text-sm"></i>
           </div>
           <p className="font-light font-mono text-sm text-gray-700 hover:text-gray-900 transition-all duration-200">Reporte general de los docentes.</p>
         </div>

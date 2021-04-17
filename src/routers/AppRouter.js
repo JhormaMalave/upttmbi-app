@@ -35,21 +35,6 @@ const AppRouter = () => {
         setChecking(false)
     }, [auth, setIsLoggedIn, dispatch])
 
-/*
-    useEffect(() => {
-        if (localStorage.getItem('user')){
-            const user = JSON.parse(localStorage.getItem('user')) || '';
-            dispatch(login(user));
-            setIsLoggedIn(true);
-        }else{
-            setIsLoggedIn(false);
-            localStorage.setItem('user', '')
-        }
-        setChecking(false);
-    }, [setChecking, setIsLoggedIn, dispatch])
-*/
-
-
     if(checking) {
         return (
             <h1>Cargando</h1>

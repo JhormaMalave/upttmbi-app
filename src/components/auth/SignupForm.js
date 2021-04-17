@@ -1,8 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import Swal from 'sweetalert2';
 
-import { startSignup } from '../../store/actions/auth';
+import { startSignin } from '../../store/actions/auth';
 import { useForm } from '../../hooks/useForm';
 
 const SignupForm = () => {
@@ -16,31 +15,11 @@ const SignupForm = () => {
 
   const {email, password, passwordConfirm} = form
 
-  const validateForm = () => {
-    if (password.trim().length < 6) {
-      Swal.fire(
-        'Error',
-        'Las contraseña no puede ser menor a 6 caracteres',
-        'error',
-      );
-      return false;
-    }
-    if (password !== passwordConfirm) {
-      Swal.fire(
-        'Error',
-        'Las contraseñas no coinciden',
-        'error',
-      );
-      return false;
-    }
-    return true;
-  }
+
 
   const handleSignup = (e) => {
     e.preventDefault();
-    if (validateForm()) {
-      dispatch(startSignup(email, password, passwordConfirm));
-    }
+    dispatch(startSignin({email, password}));
   }
 
   return (

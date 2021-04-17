@@ -4,9 +4,9 @@ const authReducer = (state = {}, action) => {
   switch (action.type) {
     case types.login:
       return {
-        email: action.payload.email,
         token: action.payload.token, 
-        expiredIn: action.payload.expiresIn,
+        email: action.payload.email,
+        role: action.payload.role,
       }
 
     case types.logout:

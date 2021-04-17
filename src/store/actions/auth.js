@@ -2,10 +2,6 @@ import { loginFetch } from "../../helpers/authHelper";
 import { types } from "../types/types";
 import { setAlert  } from "./ui";
 
-const startLogout = () => {
-  
-}
-
 const startLoginWithEmailAndPassword = (email, password) => {
   return async (dispatchEvent) => {
     const response = await loginFetch({email, password})
@@ -17,9 +13,16 @@ const startLoginWithEmailAndPassword = (email, password) => {
         dispatchEvent(login(user));
         break;
       default:
-        dispatchEvent(setAlert('error', 'Ocurrió un error al iniciar sesión'));
+        dispatchEvent(setAlert('error', 'Ocurrió un error al iniciar sesión, por favor verifique su correo y contraseña'));
         break;
     }
+  }
+}
+
+const startLogout = () => {
+  return async (dispatchEvent) => {
+    await localStorage.setItem('user', '');
+    dispatchEvent(logout())
   }
 }
 

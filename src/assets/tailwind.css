@@ -1,3 +1,37 @@
 @tailwind base;
 @tailwind componets;
 @tailwind utilities;
+
+.input-form {
+  @apply appearance-none;
+  @apply rounded-none;
+  @apply relative;
+  @apply block;
+  @apply w-full;
+  @apply px-3;
+  @apply py-2;
+  @apply border;
+  @apply border-gray-300;
+  @apply placeholder-gray-500;
+  @apply text-gray-900;
+  @apply rounded-md;
+  @apply mt-2;
+}
+
+.input-form:focus {
+  @apply outline-none;
+  @apply ring-indigo-500;
+  @apply border-indigo-500;
+  @apply z-10;
+}
+
+.input-form-error {
+  @apply border-red-300;
+  @apply placeholder-red-500;
+  @apply text-red-900;
+}
+
+.input-form-error:focus {
+  @apply ring-red-500;
+  @apply border-red-500;
+}

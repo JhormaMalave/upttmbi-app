@@ -2,68 +2,99 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 
 import { startSignin } from '../../store/actions/auth';
-import { useForm } from '../../hooks/useForm';
+import { useForm } from "react-hook-form";
+import FormMessageError from '../FormMessageError';
 
 const SignupForm = () => {
   const dispatch = useDispatch()
+  const { register, handleSubmit, formState: { errors }, setError} = useForm();
 
-  const {form, handleInputChange} = useForm({
-    email: 'jhormamalave99@gmail.com',
-    password: '123456',
-    passwordConfirm: '123456',
-  });
+  const onSubmit = (data) => {
+    // Validate password confirm
+    if (data.password !== data.password_confirm){
+      setError("password", {
+        type: "confirm",
+      });
+      setError("password_confirm", {
+        type: "confirm",
+      });
+      return;
+    }
+    dispatch(startSignin({email: data.email, password: data.password}));
 
-  const {email, password, passwordConfirm} = form
-
-
-
-  const handleSignup = (e) => {
-    e.preventDefault();
-    dispatch(startSignin({email, password}));
   }
 
   return (
-      <form className="mt-8 space-y-6" onSubmit={handleSignup} >
+      <form className="mt-8 space-y-6" onSubmit={handleSubmit(onSubmit)}>
       <input type="hidden" name="remember" value="true" />
       <div className="rounded-md shadow-sm -space-y-px">
         <div>
-          <label htmlFor="email-address" className="sr-only">Usuario</label>
           <input
             id="email-address"
-            name="email"
-            type="email"
-            autoComplete="email"
-            className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md mb-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+            type="text"
+            className={
+              `${errors.hasOwnProperty('email') &&
+              'input-form-error'} input-form sm:text-sm`
+            }
             placeholder="Correo"
-            value={email}
-            onChange={handleInputChange}
+            {...register("email", { required: true, pattern: /^\S+@\S+$/i})}
           />
+
+          {/* Show message if there is error in the email form */}
+          {errors.email && errors.email.type === "required" && (
+            <FormMessageError message="Debes de ingresar un correo" />
+          )}
+          {errors.email && errors.email.type === "pattern" && (
+            <FormMessageError message="Debes de ingresar un correo valido" />
+          )}
         </div>
+
         <div>
-          <label htmlFor="password" className="sr-only">Contraseña</label>
           <input 
             id="password"
-            name="password"
             type="password"
-            autoComplete="current-password"
-            className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md mb-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" 
+            className={
+              `${errors.hasOwnProperty('password') &&
+              'input-form-error'} input-form sm:text-sm`
+            }
             placeholder="Contraseña"
-            value={password}
-            onChange={handleInputChange}
+            {...register("password", { required: true, maxLength: 20 })}
           />
+
+          {/* Show message if there is error in the password form */}
+          {errors.password && errors.password.type === "required" && (
+            <FormMessageError message="Debes de ingresar un contraseña" />
+          )}
+          {errors.password && errors.password.type === "maxLength" && (
+            <FormMessageError message="La contraseña no debe ser mayor a 20 caracteres" />
+          )}
+          {errors.password && errors.password.type === "confirm" && (
+            <FormMessageError message="Las contraseñas no coinciden" />
+          )}
         </div>
+
         <div>
-          <label htmlFor="passwordConfirm" className="sr-only">Confirmar contraseña</label>
           <input 
             id="passwordConfirm"
-            name="passwordConfirm"
             type="password"
-            autoComplete="current-password"
-            className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" 
-            placeholder="Confirmar contraseña"
-            value={passwordConfirm}
-            onChange={handleInputChange}
+            className=
+            {`${errors.hasOwnProperty('password_confirm') &&
+            'input-form-error'} input-form sm:text-sm`
+          }
+          placeholder="Confirmar contraseña"
+          {...register("password_confirm", { required: true, maxLength: 20 })}
           />
+
+          {/* Show message if there is error in the password form */}
+          {errors.password_confirm && errors.password_confirm.type === "required" && (
+            <FormMessageError message="Debes de ingresar un contraseña" />
+          )}
+          {errors.password_confirm && errors.password_confirm.type === "maxLength" && (
+            <FormMessageError message="La contraseña no debe ser mayor a 20 caracteres" />
+          )}
+          {errors.password_confirm && errors.password_confirm.type === "confirm" && (
+            <FormMessageError message="Las contraseñas no coinciden" />
+          )}
         </div>
       </div>
 

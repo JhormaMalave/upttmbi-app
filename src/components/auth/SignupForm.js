@@ -20,7 +20,7 @@ const SignupForm = () => {
       });
       return;
     }
-    dispatch(startSignin({email: data.email, password: data.password}));
+    dispatch(startSignin(data));
 
   }
 
@@ -58,15 +58,22 @@ const SignupForm = () => {
               'input-form-error'} input-form sm:text-sm`
             }
             placeholder="Contraseña"
-            {...register("password", { required: true, maxLength: 20 })}
+            {...register("password", {
+              required: true,
+              minLength: 8,
+              maxLength: 20 
+            })}
           />
 
           {/* Show message if there is error in the password form */}
           {errors.password && errors.password.type === "required" && (
-            <FormMessageError message="Debes de ingresar un contraseña" />
+            <FormMessageError message="Debes de ingresar una contraseña" />
+          )}
+          {errors.password && errors.password.type === "minLength" && (
+            <FormMessageError message="La contraseña debe tener almenos 8 caracteres" />
           )}
           {errors.password && errors.password.type === "maxLength" && (
-            <FormMessageError message="La contraseña no debe ser mayor a 20 caracteres" />
+            <FormMessageError message="La contraseña no debe sobrepasar de 20 caracteres" />
           )}
           {errors.password && errors.password.type === "confirm" && (
             <FormMessageError message="Las contraseñas no coinciden" />
@@ -82,15 +89,12 @@ const SignupForm = () => {
             'input-form-error'} input-form sm:text-sm`
           }
           placeholder="Confirmar contraseña"
-          {...register("password_confirm", { required: true, maxLength: 20 })}
+          {...register("password_confirm", { required: true })}
           />
 
           {/* Show message if there is error in the password form */}
           {errors.password_confirm && errors.password_confirm.type === "required" && (
             <FormMessageError message="Debes de ingresar un contraseña" />
-          )}
-          {errors.password_confirm && errors.password_confirm.type === "maxLength" && (
-            <FormMessageError message="La contraseña no debe ser mayor a 20 caracteres" />
           )}
           {errors.password_confirm && errors.password_confirm.type === "confirm" && (
             <FormMessageError message="Las contraseñas no coinciden" />

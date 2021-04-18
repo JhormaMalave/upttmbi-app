@@ -3,53 +3,78 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { startLoginWithEmailAndPassword } from '../../store/actions/auth';
-import { useForm } from '../../hooks/useForm';
+import { useForm } from "react-hook-form";
+import FormMessageError from '../FormMessageError';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
+  const { register, handleSubmit, formState: { errors } } = useForm();
 
   const { loading } = useSelector(state => state.ui)
 
+  const onSubmit = data => {
+    console.log(data)
+    if (!loading) {
+      dispatch(startLoginWithEmailAndPassword(data.email, data.password));
+    }
+  }
+/*
   const handleLogin = (e) => {
       e.preventDefault();
-      if (!loading) {
-        dispatch(startLoginWithEmailAndPassword(form.email, form.password));
-      }
+      
   }
-  const {form, handleInputChange} = useForm({
-    email: 'jhormamalave@gmail.com',
-    password: '123456',
-  });
+  */
+  
 
   return (
-      <form className="mt-8 space-y-6" onSubmit={handleLogin} >
+      <form className="mt-8 space-y-6" onSubmit={handleSubmit(onSubmit)} >
       <input type="hidden" name="remember" value="true" />
       <div className="rounded-md shadow-sm -space-y-px">
         <div>
-          <label htmlFor="email-address" className="sr-only">Usuario</label>
           <input
             id="email-address"
-            name="email"
-            type="email"
+            type="text"
             autoComplete="email"
             className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md mb-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
             placeholder="Usuario"
-            value={form.email}
-            onChange={handleInputChange}
+            {...register('email', {
+              required: true,
+              pattern: /^\S+@\S+$/i
+            })}
           />
+
+          {/* Show message if there is error in the email form */}
+          {errors.email && errors.email.type === "required" && (
+            <FormMessageError message="Debes de ingresar un correo" />
+          )}
+          {errors.email && errors.email.type === "pattern" && (
+            <FormMessageError message="Debes de ingresar un correo valido" />
+          )}
         </div>
         <div>
-          <label htmlFor="password" className="sr-only">Contraseña</label>
           <input 
             id="password"
-            name="password"
             type="password"
             autoComplete="current-password"
             className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" 
             placeholder="Contraseña"
-            value={form.password}
-            onChange={handleInputChange}
+            {...register("password", {
+              required: true,
+              minLength: 8,
+              maxLength: 20 
+            })}
           />
+
+          {/* Show message if there is error in the password form */}
+          {errors.password && errors.password.type === "required" && (
+            <FormMessageError message="Debes de ingresar una contraseña" />
+          )}
+          {errors.password && errors.password.type === "minLength" && (
+            <FormMessageError message="La contraseña debe tener almenos 8 caracteres" />
+          )}
+          {errors.password && errors.password.type === "maxLength" && (
+            <FormMessageError message="La contraseña no debe sobrepasar de 20 caracteres" />
+          )}
         </div>
       </div>
 

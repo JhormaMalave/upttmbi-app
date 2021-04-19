@@ -11,7 +11,6 @@ const Footer = React.memo(() => {
                 <div className="flex flex-wrap justify-end w-full">
                     <p className="font-semibold text-gray-400 text-right text-sm pr-3">Universidad Politécnica Territorial del Estado Trujillo<br/>"Mario Briceño Iragorry"</p>
                     <Logo className="h-12"/>
-                    <svg src="w-4" xmlns="./assets/images/upttmbi.svg"  viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" />
                 </div>
             </div>
         </footer>

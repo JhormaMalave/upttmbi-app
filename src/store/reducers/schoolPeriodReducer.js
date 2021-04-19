@@ -19,7 +19,7 @@ const schoolPeriodReducer = (state = initialState, action) => {
           id: action.payload.id,
           name: String(action.payload.name),
           initial_date: action.payload.initial_date,
-          end_date: action.payload.end_date || '',
+          final_date: action.payload.final_date || '',
           state: action.payload.state,
         }
       }

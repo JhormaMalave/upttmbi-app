@@ -15,7 +15,7 @@ const getSchoolPeriodsFetch = async (params = {}) => {
     headers: {
       'Content-Type': 'application/json',
       'Access-Control-Origin': '*',
-      'Authorization': `${getToken()}`
+      'Authorization': getToken()
     },
   });
   
@@ -30,7 +30,7 @@ const getSchoolPeriodFetch = async (params = '') => {
     headers: {
       'Content-Type': 'application/json',
       'Access-Control-Origin': '*',
-      'Authorization': `Bearer ${getToken()}`
+      'Authorization': getToken()
     },
   });
   
@@ -45,7 +45,7 @@ const updatedSchoolPeriodFetch = async (id, params) => {
     headers: {
       'Content-Type': 'application/json',
       'Access-Control-Origin': '*',
-      'Authorization': `Bearer ${getToken()}`
+      'Authorization': getToken()
     },
     body: JSON.stringify(params),
   });
@@ -59,12 +59,11 @@ const postSchoolPeriodsFetch = async (params = {}) => {
     headers: {
       'Content-Type': 'application/json',
       'Access-Control-Origin': '*',
-      'Authorization': `Bearer ${getToken()}`
+      'Authorization': getToken()
     },
     body:JSON.stringify(params),
   });
-  //const school_period = response.json();
-  console.log(response)
+
   if (response.status !== 201){
     return false;
   }

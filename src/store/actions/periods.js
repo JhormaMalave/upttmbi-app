@@ -43,21 +43,17 @@ const startLoadSchoolPeriod = (params = '') => {
 
 const startUpdatedSchoolPeriod = () => {
   return async (dispatchEvent, getState) => {
-    const { active } = getState().schoolPeriod;
-    const params = {
-      name: active.name,
-      start_date: active.start_date,
-      end_date: active.end_date,
-      state: active.state,
-    };
-    const response = await updatedSchoolPeriodFetch(active.id, params);
+    const { active:params } = getState().schoolPeriod;
+    const response = await updatedSchoolPeriodFetch(params.id, params);
+
     switch (response.status) {
       case 404:
         dispatchEvent(setAlert('error', 'El período no fue encontrado'));
         break;
       case 200:
-        const schoolPeriod = await response.json();
-        dispatchEvent(activeSchoolPeriod(schoolPeriod));
+        const period = await response.json();
+        dispatchEvent(activeSchoolPeriod(period));
+        dispatchEvent(setAlert('success', `El periodo ${period.name} se actualizo exitosamente`, `/department/periods/${period.id}`));
         break;
       default:
         dispatchEvent(setAlert('error', 'Ocurrió un error al actualizar el período'));

@@ -69,10 +69,10 @@ const PeriodScreen = () => {
             <PeriodsForm
               schoolPeriod={{
                 id: schoolPeriod.id,
-                initial_date: schoolPeriod.start_date,
-                final_date: schoolPeriod.end_date || '',
+                initial_date: schoolPeriod.initial_date,
+                final_date: schoolPeriod.final_date || '',
                 name: schoolPeriod.name,
-                state: schoolPeriod.state,
+                status: schoolPeriod.status,
               }}
               type='edit'
             />

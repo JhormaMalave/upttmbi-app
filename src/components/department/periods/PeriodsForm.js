@@ -8,7 +8,7 @@ import FormMessageError from '../../FormMessageError';
 
 const PeriodsForm = ({schoolPeriod, type}) => {
   const dispatch = useDispatch();
-  const { register, handleSubmit, formState: { errors }} = useForm({xd: 11});
+  const { register, handleSubmit, formState: { errors }} = useForm({defaultValues: schoolPeriod});
 
   const onSubmit = (data) => {
     dispatch(activeSchoolPeriod(data));
@@ -97,8 +97,8 @@ const PeriodsForm = ({schoolPeriod, type}) => {
                   id="status"
                   {...register('status', { required: true})}
                 >
-                  <option value="true">Activo</option>
-                  <option value="false">Inactivo</option>
+                  <option value="1">Activo</option>
+                  <option value="0">Inactivo</option>
                 </select>
                 {/* Show message if there is error in the email form */}
                 {errors.status && errors.status.type === "required" && (

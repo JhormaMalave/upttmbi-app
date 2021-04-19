@@ -39,7 +39,7 @@ const getSchoolPeriodFetch = async (params = '') => {
 
 const updatedSchoolPeriodFetch = async (id, params) => {
   const urlWithId = `${url}/${id}`;
-
+  console.log(params)
   const response = await fetch(urlWithId, {
     method: 'PUT',
     headers: {
@@ -47,7 +47,9 @@ const updatedSchoolPeriodFetch = async (id, params) => {
       'Access-Control-Origin': '*',
       'Authorization': getToken()
     },
-    body: JSON.stringify(params),
+    body: JSON.stringify({
+      period: {...params}
+    }),
   });
 
   return response;

@@ -14,6 +14,7 @@ const startLoadSchoolPeriods = (params = {}) => {
       case 200:
         const schoolPeriods = await response.json();
         dispatchEvent(loadPeriodSchool(schoolPeriods));
+        console.log(schoolPeriods)
         break;
       default:
         dispatchEvent(setAlert('error', 'Ocurrió un error al obtener los periodos escolares'));

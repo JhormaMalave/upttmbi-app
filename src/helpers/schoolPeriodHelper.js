@@ -1,24 +1,24 @@
 import { apiURL } from "../rails/railsConfig";
 
 // SchoolPeriod URL
-const url = `${apiURL}/school_periods`;
+const url = `${apiURL}/periods`;
 
 const getToken = () => {
   return localStorage.getItem('user') && JSON.parse(localStorage.getItem('user')).token;
 }
-const getSchoolPeriodsFetch = async (params = {}) => {
-  const getParams = params.state && new URLSearchParams(params);
-  const urlWithParams = `${url}?${getParams}`;
 
+const getSchoolPeriodsFetch = async (params = {}) => {
+  const getParams = params.state ? new URLSearchParams(params) : '';
+  const urlWithParams = `${url}?${getParams}`;
   const response = await fetch (urlWithParams, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
       'Access-Control-Origin': '*',
-      'Authorization': `Bearer ${getToken()}`
+      'Authorization': `${getToken()}`
     },
   });
-
+  
   return response;
 }
 

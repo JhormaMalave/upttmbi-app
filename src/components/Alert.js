@@ -1,8 +1,9 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { removeAlert } from '../store/actions/ui';
 
-const Alert = ({type, message}) => {
+const Alert = ({type, message, url}) => {
   const dispatch = useDispatch()
   const handleClose = () => {
     dispatch(removeAlert());
@@ -16,7 +17,7 @@ const Alert = ({type, message}) => {
         </svg>
       </span>
       <span className="inline-block align-middle mr-8">
-        {message}
+        {message} { url && (<Link to={url} className="underline">Ver registro</Link>) }
       </span>
       <button className="absolute bg-transparent text-2xl font-semibold leading-none right-0 top-0 mt-4 mr-6 outline-none focus:outline-none" onClick={handleClose}>
         <span>×</span>

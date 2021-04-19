@@ -13,6 +13,7 @@ const uiReducer = (state = initState, action) => {
         alert: {
           type: action.payload.type,
           message: action.payload.message,
+          url: action.payload.url
         }
       });
 

@@ -12,8 +12,6 @@ const PeriodScreen = () => {
 
   const { active:schoolPeriod } = useSelector(state => state.schoolPeriod);
 
-  const startDate = schoolPeriod && new Date(schoolPeriod.start_date);
-
   const [showHideForm, setShowHideForm] = useState(false);
 
   // Load period school
@@ -71,8 +69,8 @@ const PeriodScreen = () => {
             <PeriodsForm
               schoolPeriod={{
                 id: schoolPeriod.id,
-                start_date: schoolPeriod.start_date,
-                end_date: schoolPeriod.end_date || '',
+                initial_date: schoolPeriod.start_date,
+                final_date: schoolPeriod.end_date || '',
                 name: schoolPeriod.name,
                 state: schoolPeriod.state,
               }}

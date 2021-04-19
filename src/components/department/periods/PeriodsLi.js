@@ -46,7 +46,7 @@ PeriodsLi.propTypes = {
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   initial_date: PropTypes.string.isRequired,
-  final_date: PropTypes.string.isRequired,
+  final_date: PropTypes.string,
   status: PropTypes.bool.isRequired,
 }
 

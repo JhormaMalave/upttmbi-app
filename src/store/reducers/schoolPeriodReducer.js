@@ -20,7 +20,7 @@ const schoolPeriodReducer = (state = initialState, action) => {
           name: String(action.payload.name),
           initial_date: action.payload.initial_date,
           final_date: action.payload.final_date || '',
-          state: action.payload.state,
+          status: action.payload.status,
         }
       }
     case types.periodSchoolRemoveActive:

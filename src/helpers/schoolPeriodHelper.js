@@ -61,14 +61,12 @@ const postSchoolPeriodsFetch = async (params = {}) => {
       'Access-Control-Origin': '*',
       'Authorization': getToken()
     },
-    body:JSON.stringify(params),
+    body:JSON.stringify({
+      period: {...params}
+    }),
   });
 
-  if (response.status !== 201){
-    return false;
-  }
-  const schoolPeriod = await response.json();
-  return schoolPeriod;
+  return response;
 }
 
 

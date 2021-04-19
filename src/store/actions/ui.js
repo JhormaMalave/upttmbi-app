@@ -1,10 +1,11 @@
 import { types } from "../types/types";
 
-const setAlert = (type, message) => ({
+const setAlert = (type, message, url) => ({
   type: types.uiSetAlert,
   payload: {
     type,
-    message
+    message,
+    url
   }
 });
 

@@ -63,22 +63,26 @@ const startUpdatedSchoolPeriod = () => {
         dispatchEvent(setAlert('error', 'Ocurrió un error al actualizar el período'));
         break;
     }
-    
   }
 }
 
 const startNewSchoolPeriod = () => {
   return async (dispatchEvent, getState) => {
-    const { active } = getState().schoolPeriod;
-    const params = {
-      start_date: active.start_date,
-      end_date: active.end_date,
-      name: active.name,
-      state: active.state,
+    const { active:params } = getState().schoolPeriod;
+    const response = await postSchoolPeriodsFetch(params);
+    switch (response.status) {
+      case 401:
+        dispatchEvent(setAlert('error', 'No tienes los permisos para registrar un periodo'));
+        break;
+      case 200:
+        const period = await response.json();
+        dispatchEvent(setAlert('success', `El periodo ${period.name} se guardo exitosamente`, `/department/periods/${period.id}`));
+        break;
+      default:
+        dispatchEvent(setAlert('error', 'Ocurrió un error al guardad el período'));
+        break;
     }
-    const schoolPeriod = await postSchoolPeriodsFetch(params);
-    console.log(schoolPeriod)
-    dispatchEvent(activeSchoolPeriod(schoolPeriod))
+    //dispatchEvent(activeSchoolPeriod(schoolPeriod))
   }
 }
 
